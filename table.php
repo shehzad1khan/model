@@ -116,7 +116,7 @@
       </div>
       <!-- --Dailog Form Tag-- -->
       <div class="modal-body">
-        <form method="POST" action="insert.php">
+        <form method="POST" action="insert.php" was-validated>
          <div class="form-row">   
           <div class="col">
             <label for="recipient-name" class="col-form-label">Name:</label>
