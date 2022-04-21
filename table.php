@@ -19,10 +19,10 @@
 <body>
   <div class="row">
     <div class="col-md-1 ml-auto"></div>
-    <div class="col-md-10">
+    <div class="col-md-10 offset-3">
       <!---- Alert Record Inserted ---->
       <?php if (isset($_GET['record']) && $_GET['record'] == 'inserted') { ?>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="alert alert-success alert-dismissible fade show col-7" role="alert">
           <strong>Success!</strong> Record inserted successfully.
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -190,7 +190,8 @@
           <h5 class="modal-title" id="exampleModalLabel2">User Details</h5>
         </div>
         <div class="modal-body">
-         <table class="border border-gray">
+          
+         <table class="table table-striped table-success border border-gray" id="table">
           <tr>
             <td>Name:</td>
             <td><?php echo $row['name']; ?></td>
@@ -226,8 +227,9 @@
          </table> 
             
             
-            <div class="form-group mr-auto">
-              <button type="button" class="btn btn-danger ml-2" data-dismiss="modal">Close</button>
+            <div class="d-flex">
+              <button type="button" class="btn btn-danger me-auto p2" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-warning offset-8" data-dismiss="modal"><b>Print</b></button>
             </div>
 
           </form>
@@ -239,9 +241,9 @@
 
   <!-- Bootstrap core JavaScript-->
 
-  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script> 
 
   <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
@@ -280,7 +282,7 @@
 
       // view Modal fucntion start
       $('.view-data').on('click', function() {
-        var userid1 = $(this).data("id");
+        var userid1 = $(this).data('id');
         $('#exampleModal2').modal('show');
             $('#name').val('');
             $('#passport').val('');
@@ -320,6 +322,11 @@
         $('#exampleModal').modal('show');
         $('#exampleModalLabel').html("Add Record");
         $('#submit').val("Submit");
+      });
+
+      $('.view-data').on('click', function() {
+        $('#table')[0].reset();
+        $('#exampleModal2').modal('show');
       });
 
       $('#example').DataTable();
