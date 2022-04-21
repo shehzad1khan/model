@@ -19,7 +19,7 @@
 <body>
   <div class="row">
     <div class="col-md-1 ml-auto"></div>
-    <div class="col-md-10 offset-3">
+    <div class="col-md-7">
       <!---- Alert Record Inserted ---->
       <?php if (isset($_GET['record']) && $_GET['record'] == 'inserted') { ?>
         <div class="alert alert-success alert-dismissible fade show col-7" role="alert">
@@ -54,7 +54,7 @@
       <h3 class="offset-4">E-Commerce Business Traders</h3>
 
       <!-- -- Table Start here -- -->
-      <table id="example" class="table table-responsive table-striped" style="width:auto">
+      <table id="example" class="border border-gray table table-responsive table-striped" style="width:auto">
         <thead>
           <tr>
             <th>Name</th>
@@ -241,11 +241,11 @@
 
   <!-- Bootstrap core JavaScript-->
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
-  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script> 
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> 
 
-  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
