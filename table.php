@@ -19,7 +19,7 @@
 <body>
   <div class="row">
     <div class="col-md-1 ml-auto"></div>
-    <div class="col-md-7">
+    <div class="col-md-10 col-lg-10">
       <!---- Alert Record Inserted ---->
       <?php if (isset($_GET['record']) && $_GET['record'] == 'inserted') { ?>
         <div class="alert alert-success alert-dismissible fade show col-7" role="alert">
@@ -241,25 +241,13 @@
 
   <!-- Bootstrap core JavaScript-->
 
-<<<<<<< HEAD
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-
-=======
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
   <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> 
 
   <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
->>>>>>> 4e34f8a94b93f938e0d9f2e576ec9436fdc875df
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
-
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
     $(document).ready(function() {
@@ -307,9 +295,6 @@
           }
         });
       });
-<<<<<<< HEAD
-    
-=======
 
       // view Modal fucntion start
       $('.view-data').on('click', function() {
@@ -347,7 +332,6 @@
           }
         });
       });
->>>>>>> 4e34f8a94b93f938e0d9f2e576ec9436fdc875df
 
       $('.add').on('click', function() {
         $('#form')[0].reset();
@@ -356,8 +340,6 @@
         $('#submit').val("Submit");
       });
 
-<<<<<<< HEAD
-=======
       $('.view-data').on('click', function() {
         $('#table')[0].reset();
         $('#exampleModal2').modal('show');
@@ -366,7 +348,6 @@
       $('#example').DataTable();
 
 
->>>>>>> 4e34f8a94b93f938e0d9f2e576ec9436fdc875df
     });
     function cal(){
       
