@@ -19,10 +19,10 @@
 <body>
   <div class="row">
     <div class="col-md-1 ml-auto"></div>
-    <div class="col-md-10">
+    <div class="col-md-7">
       <!---- Alert Record Inserted ---->
       <?php if (isset($_GET['record']) && $_GET['record'] == 'inserted') { ?>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="alert alert-success alert-dismissible fade show col-7" role="alert">
           <strong>Success!</strong> Record inserted successfully.
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -54,7 +54,7 @@
       <h3 class="offset-4">E-Commerce Business Traders</h3>
 
       <!-- -- Table Start here -- -->
-      <table id="example" class="table table-responsive table-striped" style="width:auto">
+      <table id="example" class="border border-gray table table-responsive table-striped" style="width:auto">
         <thead>
           <tr>
             <th>Name</th>
@@ -190,7 +190,8 @@
           <h5 class="modal-title" id="exampleModalLabel2">User Details</h5>
         </div>
         <div class="modal-body">
-         <table class="border border-gray">
+          
+         <table class="table table-striped table-success border border-gray" id="table">
           <tr>
             <td>Name:</td>
             <td><?php echo $row['name']; ?></td>
@@ -226,8 +227,9 @@
          </table> 
             
             
-            <div class="form-group mr-auto">
-              <button type="button" class="btn btn-danger ml-2" data-dismiss="modal">Close</button>
+            <div class="d-flex">
+              <button type="button" class="btn btn-danger me-auto p2" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-warning offset-8" data-dismiss="modal"><b>Print</b></button>
             </div>
 
           </form>
@@ -239,11 +241,19 @@
 
   <!-- Bootstrap core JavaScript-->
 
+<<<<<<< HEAD
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
   
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
+=======
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> 
+
+  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+>>>>>>> 4e34f8a94b93f938e0d9f2e576ec9436fdc875df
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
@@ -297,7 +307,47 @@
           }
         });
       });
+<<<<<<< HEAD
     
+=======
+
+      // view Modal fucntion start
+      $('.view-data').on('click', function() {
+        var userid1 = $(this).data('id');
+        $('#exampleModal2').modal('show');
+            $('#name').val('');
+            $('#passport').val('');
+            $('#contact').val('');
+            $('#email').val('');
+            $('#total').val('');
+            $('#advance').val('');
+            $('#due').val('');
+            $('#tracking').val('');
+        
+        $.ajax({
+          url: "fetch.php?id=" + userid1,
+          method: "GET",
+          data: {
+            userid1: userid1
+          },
+          dataType: "json",
+          success: function(data) {
+            console.log(data);
+            $('#exampleModal2').modal('show');
+            $('#name').val(data.name);
+            $('#passport').val(data.passport_no);
+            $('#contact').val(data.contact_no);
+            $('#email').val(data.email);
+            $('#total').val(data.total_payment);
+            $('#advance').val(data.advance_payment);
+            $('#due').val(data.due_payment);
+            $('#tracking').val(data.tracking_id);
+            // $('#submit').val("Update");
+            // $('#exampleModalLabel2').html("User Record");
+          }
+        });
+      });
+>>>>>>> 4e34f8a94b93f938e0d9f2e576ec9436fdc875df
 
       $('.add').on('click', function() {
         $('#form')[0].reset();
@@ -306,6 +356,17 @@
         $('#submit').val("Submit");
       });
 
+<<<<<<< HEAD
+=======
+      $('.view-data').on('click', function() {
+        $('#table')[0].reset();
+        $('#exampleModal2').modal('show');
+      });
+
+      $('#example').DataTable();
+
+
+>>>>>>> 4e34f8a94b93f938e0d9f2e576ec9436fdc875df
     });
     function cal(){
       
