@@ -92,7 +92,7 @@
 
                 <a href="delete.php?id=<?php echo $row['id']; ?>" data-id="<?php echo $row['id']; ?>" onClick="return confirm('ARE YOU SURE TO DELETE THIS RECORD?');"><i class="bi bi-trash3-fill text-danger"></i></a>
 
-                <a href="#" class="view-data" data-id="<?php echo $row['id']; ?>"><i class="bi bi-eye text-info"></i></a>
+                <a href="#" class="view-btn" data-id='<?php echo $row['id']; ?>'><i class="bi bi-eye text-info"></i></a>
               </td>
             </tr>
           </tbody>
@@ -239,17 +239,37 @@
 
   <!-- Bootstrap core JavaScript-->
 
-  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
-  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+
 
 
   <script>
     $(document).ready(function() {
+      $('#example').DataTable();
+
+      // view Modal fucntion start
+      $('.view-btn').on('click',function() {        
+        
+        id: $(this).attr('data-id');
+        
+        // $.ajax({
+        //   url: 'show.php',
+        //   type: 'POST',
+        //   data: {},
+        //   success: function(response) {
+        //     $('#exampleModal2').html(response);
+        //   }
+        // });
+        $('#exampleModal2').modal('show');        
+      });
 
       $('.edit-data').on('click', function() {
         var userid = $(this).data("id");
@@ -277,43 +297,7 @@
           }
         });
       });
-
-      // view Modal fucntion start
-      $('.view-data').on('click', function() {
-        var userid1 = $(this).data("id");
-        $('#exampleModal2').modal('show');
-            $('#name').val('');
-            $('#passport').val('');
-            $('#contact').val('');
-            $('#email').val('');
-            $('#total').val('');
-            $('#advance').val('');
-            $('#due').val('');
-            $('#tracking').val('');
-        
-        $.ajax({
-          url: "fetch.php?id=" + userid1,
-          method: "GET",
-          data: {
-            userid1: userid1
-          },
-          dataType: "json",
-          success: function(data) {
-            console.log(data);
-            $('#exampleModal2').modal('show');
-            $('#name').val(data.name);
-            $('#passport').val(data.passport_no);
-            $('#contact').val(data.contact_no);
-            $('#email').val(data.email);
-            $('#total').val(data.total_payment);
-            $('#advance').val(data.advance_payment);
-            $('#due').val(data.due_payment);
-            $('#tracking').val(data.tracking_id);
-            // $('#submit').val("Update");
-            // $('#exampleModalLabel2').html("User Record");
-          }
-        });
-      });
+    
 
       $('.add').on('click', function() {
         $('#form')[0].reset();
@@ -321,9 +305,6 @@
         $('#exampleModalLabel').html("Add Record");
         $('#submit').val("Submit");
       });
-
-      $('#example').DataTable();
-
 
     });
     function cal(){
