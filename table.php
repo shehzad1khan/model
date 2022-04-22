@@ -11,12 +11,9 @@
   <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-
-
-
 </head>
 
-<body style="background-color:powderblue;">
+<body">
   <div class="row">
 
     <?php 
@@ -63,58 +60,31 @@
       <table id="example" class="border border-gray table table-responsive" style="width:auto">
         <thead>
           <tr>
+            <th>Id</th>
             <th>Name</th>
-            <th>Passport_No</th>
-            <th>Contact_No</th>
-            <th>Total_Payment</th>
-            <th>Advance_Payment</th>
-            <th>Due_Payment</th>
-            <th>Tracking_Id</th>
+            <th>Passport</th>
+            <th>Contact</th>
+            <th>Total Payment</th>
+            <th>Advance Payment</th>
+            <th>Due Payment</th>
+            <th>Tracking Id</th>
             <th>Actions</th>
 
           </tr>
         </thead>
-
-        <?php
-        $link = mysqli_connect("localhost", "root", "", "e-commerce");
-        $sql = "SELECT * FROM traders";
-        $query = mysqli_query($link, $sql);
-        $rowcount = mysqli_num_rows($query);
-        for ($j = 1; $j <= $rowcount; $j++) {
-          $row = mysqli_fetch_array($query);
-          $result = $row['total_payment'] - $row['advance_payment'];
-        ?>
-          <tbody>
-            <tr>
-              <td><?php echo $row['name']; ?></td>
-              <td><?php echo $row['passport_no']; ?></td>
-              <td><?php echo $row['contact_no']; ?></td>
-              <td><?php echo $row['total_payment']; ?></td>
-              <td><?php echo $row['advance_payment']; ?></td>
-              <td><?php echo $result; ?></td>
-              <td><?php echo $row['tracking_id']; ?></td>
-              <td>
-                <a href="#" class="edit-data" data-id="<?php echo $row['id']; ?>"><i class="bi bi-pencil-square text-success"></i></a>
-
-                <a href="delete.php?id=<?php echo $row['id']; ?>" data-id="<?php echo $row['id']; ?>" onClick="return confirm('ARE YOU SURE TO DELETE THIS RECORD?');"><i class="bi bi-trash3-fill text-danger"></i></a>
-
-                <a href="#" class="view-btn" data-id='<?php echo $row['id']; ?>'><i class="bi bi-eye text-info"></i></a>
-              </td>
-            </tr>
-          </tbody>
-        <?php } ?>
         <tfoot>
           <tr>
+            <th>Id</th>
             <th>Name</th>
-            <th>Passport_No</th>
-            <th>Contact_No</th>
-            <th>Total_Payment</th>
-            <th>Advance_Payment</th>
-            <th>Due_Payment</th>
-            <th>Tracking_Id</th>
+            <th>Passport</th>
+            <th>Contact</th>
+            <th>Total Payment</th>
+            <th>Advance Payment</th>
+            <th>Due Payment</th>
+            <th>Tracking Id</th>
             <th>Actions</th>
           </tr>
-        </tfoot>
+        </tfooter>
       </table>
     </div>
     <div class="col-md-1 mr-auto"></div>
@@ -217,7 +187,6 @@
   <!-- --view modal End-- -->
 
   <!-- Bootstrap core JavaScript-->
-
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
   <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> 
@@ -226,9 +195,24 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
+
   <script>
     $(document).ready(function() {
-      $('#example').DataTable();
+      $('#example').dataTable({
+        "processing": true,
+        "ajax": "fetch.php?view-list=1",
+        "columns": [
+            {data: 'id'},
+            {data: 'name'},
+            {data: 'passport_no'},
+            {data: 'contact_no'},
+            {data: 'total_payment'},
+            {data: 'advance_payment'},
+            {data: 'due_payment'},
+            {data: 'tracking_id'},
+            {data: 'action'}
+        ]
+    });
 
       // view Modal fucntion start
       $('.view-btn').on('click',function() {        
@@ -327,7 +311,6 @@
         $('#exampleModal2').modal('show');
       });
 
-      $('#example').DataTable();
 
 
     });
