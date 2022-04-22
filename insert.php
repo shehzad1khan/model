@@ -1,7 +1,7 @@
 <?php 
  $link = mysqli_connect("localhost", "root", "", "e-commerce");
 
- if(isset($_POST['action'])){
+ if(isset($_POST['action'])){   
     $name = mysqli_real_escape_string($link, $_POST['name']);
     $passport = mysqli_real_escape_string($link, $_POST['passport']);
     $contact = mysqli_real_escape_string($link, $_POST['contact']);
@@ -10,9 +10,14 @@
     $due = mysqli_real_escape_string($link, $_POST['due']);
     $tracking = mysqli_real_escape_string($link, $_POST['tracking']);
     $email = mysqli_real_escape_string($link, $_POST['email']);
-    if($_POST['action'] == 'insert'){
-        $insert = "INSERT INTO traders (name, passport_no, contact_no, total_payment, advance_payment, due_payment, tracking_id, email) VALUES ('$name', '$passport', '$contact', '$total', '$advance', '$due', '$tracking', '$email')";
+
+    if($_POST['action'] == 'insert'){ 
+        $user_id = $_SESSION['userid'];      
+        $date = date('d-m-Y');
+        $insert = "INSERT INTO traders (name, passport_no, contact_no, total_payment, advance_payment, due_payment, tracking_id, email,date,user_id) VALUES ('$name', '$passport', '$contact', '$total', '$advance', '$due', '$tracking', '$email', '$date','$user_id')";
         $result = mysqli_query($link, $insert);
+        echo $insert;
+        die();
         if($result){
             header("location: table.php?record=inserted");
         }

@@ -1,3 +1,11 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['username'])){
+    header("location:login.php?session=unset");
+  }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +34,7 @@
           <a class="nav-link" href="#">List</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
+          <a class="nav-link" href="#">Report</a>
         </li>    
       </ul>  
         <span class="nav-item">

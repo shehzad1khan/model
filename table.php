@@ -21,7 +21,7 @@
     ?>
 
     <div class="col-md-1 ml-auto"></div>
-    <div class="col-md-10 col-lg-7 col-sm-10">
+    <div class="col-md-10 col-lg-6 col-sm-10">
   
       <!---- Alert Record Inserted ---->
       <?php if (isset($_GET['record']) && $_GET['record'] == 'inserted') { ?>
@@ -171,8 +171,7 @@
           
          <table class="table table-striped table-success border border-gray" id="table">
           
-         </table> 
-            
+         </table>           
             
             <div class="d-flex">
               <button type="button" class="btn btn-danger me-auto p2" data-dismiss="modal">Close</button>
@@ -193,7 +192,8 @@
 
   <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 
   <script>
@@ -230,8 +230,7 @@
         });
                 
       });
-
-      $('.edit-data').on('click', function() {
+      $("#example").delegate(".edit-data", "click", function(){
         var userid = $(this).data("id");
 
         $.ajax({

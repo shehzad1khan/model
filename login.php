@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
   $link = mysqli_connect("localhost", "root", "", "e-commerce");
 
  if(isset($_POST['login'])){
@@ -7,24 +7,22 @@
   $pwd = $_POST['password'];
   $password = md5($pwd);
 
-   $select = "SELECT * FROM users WHERE `username` = '$username' AND `password` = '$password'";
+   $select = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
    $query = mysqli_query($link, $select);
-   $count = mysqli_num_rows($query);
-   $row = mysqli_fetch_array($query);
 
    if(mysqli_num_rows($query) > 0)
    {
-//     while($row = mysqli_fetch_array($query)){
-//       session_start();
-//        $_SESSION['username'] = $row['username'];
-//        $_SESSION['userid'] = $row['id'];
-//        $_SESSION['name'] = $row['name'];
+    while($row = mysqli_fetch_array($query)){
+      session_start();
+       $_SESSION['username'] = $row['username'];
+       $_SESSION['userid'] = $row['id'];
+       $_SESSION['name'] = $row['name'];
        
-//        header("location:read.php");
-//     }
-  header("location:table.php");
+       header("location:table.php");
+    }
+    
    } else{
-     header("location:login.php?insert=unsuccess");
+     header("location:login.php?insert=unsuccessful");
    }
  
  }
@@ -34,11 +32,12 @@
 <html lang="en">
 <head>
   <!-- Design by foolishdeveloper.com -->
-    <title>Glassmorphism login Form Tutorial in html css</title>
+    <title>Login Form</title>
  
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!--Stylesheet-->
     <style media="screen">
       *,
@@ -83,7 +82,7 @@ body{
     bottom: -80px;
 }
 form{
-    height: 520px;
+    height: 530px;
     width: 400px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
@@ -174,12 +173,7 @@ button{
     </div>
     <form action="" method="POST">
         <h3>Login Here</h3>
-
-        <?php 
-       if(isset($_GET['insert']) && $_GET['insert'] == 'unsuccess'){ ?>   
-         <span class="alert alert-danger">Invalid Username or Password</span>
-      <?php } ?>
-
+       
         <label for="username">Username</label>
         <input type="text" placeholder="Email or Phone" id="username" name="username">
 
@@ -187,9 +181,23 @@ button{
         <input type="password" placeholder="Password" id="password" name="password">
 
         <button type="submit" name="login">Log In</button>
-        <div class="social">
-          <div class="go"><i class="fab fa-google"></i>  Google</div>
-          <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
+             <p>Don't have account? <a href="signup.php">Sign Up</a></p>
+        <div class="row">
+        <?php 
+            if(isset($_GET['insert']) && $_GET['insert'] == 'unsuccessful'){ ?>   
+            <span class="alert alert-danger">Invalid Username or Password</span>
+          <?php } ?>
+
+          <?php 
+            if(isset($_GET['session']) && $_GET['session'] == 'unset'){ ?>   
+            <span class="alert alert-danger">Session Unset</span>
+          <?php } ?>
+
+          <?php 
+            if(isset($_GET['register']) && $_GET['register'] == 'success'){ ?>   
+            <span class="alert alert-success">Registered Successfully</span>
+          <?php } ?>
+
         </div>
     </form>
 </body>
