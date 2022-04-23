@@ -1,4 +1,5 @@
 <?php 
+session_start();
  $link = mysqli_connect("localhost", "root", "", "e-commerce");
 
  if(isset($_POST['action'])){   
@@ -16,8 +17,6 @@
         $date = date('d-m-Y');
         $insert = "INSERT INTO traders (name, passport_no, contact_no, total_payment, advance_payment, due_payment, tracking_id, email,date,user_id) VALUES ('$name', '$passport', '$contact', '$total', '$advance', '$due', '$tracking', '$email', '$date','$user_id')";
         $result = mysqli_query($link, $insert);
-        echo $insert;
-        die();
         if($result){
             header("location: table.php?record=inserted");
         }
