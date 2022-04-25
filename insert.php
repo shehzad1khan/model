@@ -3,6 +3,7 @@ session_start();
  $link = mysqli_connect("localhost", "root", "", "e-commerce");
 
  if(isset($_POST['action'])){   
+    $target = "db_images/".basename($_FILES['image']['name']);
     $name = mysqli_real_escape_string($link, $_POST['name']);
     $passport = mysqli_real_escape_string($link, $_POST['passport']);
     $contact = mysqli_real_escape_string($link, $_POST['contact']);
@@ -11,12 +12,15 @@ session_start();
     $due = mysqli_real_escape_string($link, $_POST['due']);
     $tracking = mysqli_real_escape_string($link, $_POST['tracking']);
     $email = mysqli_real_escape_string($link, $_POST['email']);
+    $img = $_FILES['image']['name'];
+    
 
     if($_POST['action'] == 'insert'){ 
         $user_id = $_SESSION['userid'];      
         $date = date('d-m-Y');
-        $insert = "INSERT INTO traders (name, passport_no, contact_no, total_payment, advance_payment, due_payment, tracking_id, email,date,user_id) VALUES ('$name', '$passport', '$contact', '$total', '$advance', '$due', '$tracking', '$email', '$date','$user_id')";
+        $insert = "INSERT INTO traders (name, passport_no, contact_no, total_payment, advance_payment, due_payment, tracking_id, email, image,date,user_id) VALUES ('$name', '$passport', '$contact', '$total', '$advance', '$due', '$tracking', '$email', '$img', '$date','$user_id')";
         $result = mysqli_query($link, $insert);
+        move_uploaded_file($_FILES['image']['tmp_name'], $target);
         if($result){
             header("location: table.php?record=inserted");
         }

@@ -7,10 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Table</title>
   <!-- online CSS -->
+  
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+
   <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 </head>
 
 <body">
@@ -104,7 +110,7 @@
         </div>
         <!-- --Dailog Form Tag-- -->
         <div class="modal-body">
-          <form method="POST" action="insert.php" id="form" was-validated>
+          <form method="POST" action="insert.php" id="form" enctype="multipart/form-data">
             <input type="hidden" name="id" value="0" id="id">
             <input type="hidden" name="action" value="insert" id="action">
             <div class="form-row">
@@ -141,11 +147,17 @@
                 <input type="text" id="due" readonly class="form-control" name="due">
               </div>
             </div>
-            <div class="form-group">
+            <div class="form-row">
+            <div class="col">
               <label for="tracking" class="col-form-label">Tracking Id:</label>
               <input type="text" id="tracking" class="form-control" name="tracking">
             </div>
-            <div class="form-group mr-auto">
+            <div class="col">
+              <label for="image" class="col-form-label">Picture:</label>
+              <input type="file" id="image" class="form-control" name="image">
+            </div>
+            </div>
+            <div class="form-group mr-auto mt-2">
               <input type="submit" class=" btn btn-success offset-9" name="submit" value="Submit" id="submit">
               <button type="button" class="btn btn-danger ml-2" data-dismiss="modal">Close</button>
             </div>
@@ -161,7 +173,7 @@
   <!-- ########################################################################### -->
 
   <!-- -- view modal start --  -->
-  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal2 fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -174,8 +186,8 @@
          </table>           
             
             <div class="d-flex">
-              <button type="button" class="btn btn-danger me-auto p2" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-warning offset-8" data-dismiss="modal"><b>Print</b></button>
+              <button type="button" class="btn btn-danger me-auto p2" data-dismiss="modal2">Close</button>
+              <button type="button" class="btn btn-warning offset-8" data-dismiss="modal2"><b>Print</b></button>
             </div>
 
           </form>
@@ -186,13 +198,13 @@
   <!-- --view modal End-- -->
 
   <!-- Bootstrap core JavaScript-->
+
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
   <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> 
 
   <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
 
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 
