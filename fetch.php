@@ -7,23 +7,53 @@
        $result = mysqli_query($link, $query);
        $row = mysqli_fetch_array($result);
        echo json_encode($row);
-
-    //    $name = $_GET['name'];
-    //    $passport_no = $_GET['passport_no'];
-    //    $contact_no = $_GET['contact_no'];
-    //    $total_payment = $_GET['total_payment'];
-    //    $advance_payment = $_GET['advance_payment'];
-    //    $due_payment = $_GET['due_payment'];
-    //    $tracking_id = $_GET['tracking_id'];
-    //    $email = $_GET['email'];
-
-    // $update = "UPDATE traders SET name = '$name', passport_no = '$passport_no', contact_no = '$contact_no', total_payment = '$total_payment', advance_payment = '$advance_payment', due_payment = '$due_payment', tracking_id = '$tracking_id', email = '$email' WHERE id = '$id'";
-    // $result = mysqli_query($link, $update);
-
-    // if($result){
-    //     header("location: table.php?record=updated");
-    // }
-
+    }
+    
+    if(isset($_GET['view-id'])){
+        $id = $_GET['view-id'];
+        $query = "SELECT * FROM traders WHERE id = '$id'";
+        $result = mysqli_query($link, $query);
+        $row = mysqli_fetch_array($result);
+        echo '<tr> <th>Name:</th><td>'.$row['name'].'</td> </tr> <tr> <th>Passport No:</th> <td>'.$row['passport_no'].'</td> </tr> <tr> <th>Contact No:</th> <td>'.$row['contact_no'].'</td> </tr> <tr> <th>Email:</th> <td>'.$row['email'].'</td> </tr> <tr> <th>Total Payment:</th> <td>'.$row['total_payment'].'</td> </tr> <tr> <th>Advance Payment:</th> <td>'.$row['advance_payment'].'</td> </tr> <tr> <th>Due Payment:</th> <td>'.$row['due_payment'].'</td> <tr> <th>Tracking Id:</th> <td>'.$row['tracking_id'].'</td> </tr> </tr>';
     }
 
+    if(isset($_GET['view-list'])){
+        // fetch records
+         $sql = "select * from traders";
+         $result = mysqli_query($link, $sql);
+
+         while($row = mysqli_fetch_assoc($result)) {
+            
+            
+             // Update Button
+            $updateButton = '<a href="#" data-id="'.$row['id'].'" class="edit-data"><i class="bi bi-pencil-square text-info"></i></a>';
+            
+            // Delete Button
+            $deleteButton = '<a href="delete.php? id='.$row['id'].'" data-id="'.$row['id'].'"><i class="bi bi-trash3-fill text-danger"></i></a>';
+
+            $action = $updateButton." ".$deleteButton;
+            $array[] = array(
+               "id" => $row['id'],
+               "name" => $row['name'],
+               "passport_no" => $row['passport_no'],
+               "contact_no" => $row['contact_no'],
+               "total_payment" => $row['total_payment'],
+               "advance_payment" => $row['advance_payment'],
+               "due_payment" => $row['due_payment'],
+               "tracking_id" => $row['tracking_id'],
+               "action" => $action
+             );
+         }
+
+         $dataset = array(
+            "echo" => 1,
+            "totalrecords" => count($array),
+            "totaldisplayrecords" => count($array),
+            "data" => $array
+         );
+            ## Response
+ 
+
+         echo json_encode($dataset);
+    }
 ?>

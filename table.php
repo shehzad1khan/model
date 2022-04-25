@@ -7,22 +7,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Table</title>
   <!-- online CSS -->
+  
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+
   <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 </head>
 
-<body>
+<body">
   <div class="row">
+
+    <?php 
+      include 'navbar.php';
+    ?>
+
     <div class="col-md-1 ml-auto"></div>
+<<<<<<< HEAD
     <div class="col-md-10 col-lg-10">
+=======
+    <div class="col-md-10 col-lg-6 col-sm-10">
+  
+>>>>>>> 144bec9d24a7fad74de0b0c13843b31dc630b550
       <!---- Alert Record Inserted ---->
       <?php if (isset($_GET['record']) && $_GET['record'] == 'inserted') { ?>
-        <div class="alert alert-success alert-dismissible fade show col-7" role="alert">
+        <div class="alert alert-success alert-dismissible fade show col-12" role="alert">
           <strong>Success!</strong> Record inserted successfully.
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -54,61 +67,34 @@
       <h3 class="offset-4">E-Commerce Business Traders</h3>
 
       <!-- -- Table Start here -- -->
-      <table id="example" class="border border-gray table table-responsive table-striped" style="width:auto">
+      <table id="example" class="border border-gray table table-responsive" style="width:auto">
         <thead>
           <tr>
+            <th>Id</th>
             <th>Name</th>
-            <th>Passport_No</th>
-            <th>Contact_No</th>
-            <th>Total_Payment</th>
-            <th>Advance_Payment</th>
-            <th>Due_Payment</th>
-            <th>Tracking_Id</th>
+            <th>Passport</th>
+            <th>Contact</th>
+            <th>Total Payment</th>
+            <th>Advance Payment</th>
+            <th>Due Payment</th>
+            <th>Tracking Id</th>
             <th>Actions</th>
 
           </tr>
         </thead>
-
-        <?php
-        $link = mysqli_connect("localhost", "root", "", "e-commerce");
-        $sql = "SELECT * FROM traders";
-        $query = mysqli_query($link, $sql);
-        $rowcount = mysqli_num_rows($query);
-        for ($j = 1; $j <= $rowcount; $j++) {
-          $row = mysqli_fetch_array($query);
-          $result = $row['total_payment'] - $row['advance_payment'];
-        ?>
-          <tbody>
-            <tr>
-              <td><?php echo $row['name']; ?></td>
-              <td><?php echo $row['passport_no']; ?></td>
-              <td><?php echo $row['contact_no']; ?></td>
-              <td><?php echo $row['total_payment']; ?></td>
-              <td><?php echo $row['advance_payment']; ?></td>
-              <td><?php echo $result; ?></td>
-              <td><?php echo $row['tracking_id']; ?></td>
-              <td>
-                <a href="#" class="edit-data" data-id="<?php echo $row['id']; ?>"><i class="bi bi-pencil-square text-success"></i></a>
-
-                <a href="delete.php?id=<?php echo $row['id']; ?>" data-id="<?php echo $row['id']; ?>" onClick="return confirm('ARE YOU SURE TO DELETE THIS RECORD?');"><i class="bi bi-trash3-fill text-danger"></i></a>
-
-                <a href="#" class="view-btn" data-id='<?php echo $row['id']; ?>'><i class="bi bi-eye text-info"></i></a>
-              </td>
-            </tr>
-          </tbody>
-        <?php } ?>
         <tfoot>
           <tr>
+            <th>Id</th>
             <th>Name</th>
-            <th>Passport_No</th>
-            <th>Contact_No</th>
-            <th>Total_Payment</th>
-            <th>Advance_Payment</th>
-            <th>Due_Payment</th>
-            <th>Tracking_Id</th>
+            <th>Passport</th>
+            <th>Contact</th>
+            <th>Total Payment</th>
+            <th>Advance Payment</th>
+            <th>Due Payment</th>
+            <th>Tracking Id</th>
             <th>Actions</th>
           </tr>
-        </tfoot>
+        </tfooter>
       </table>
     </div>
     <div class="col-md-1 mr-auto"></div>
@@ -128,46 +114,54 @@
         </div>
         <!-- --Dailog Form Tag-- -->
         <div class="modal-body">
-          <form method="POST" action="insert.php" id="form" was-validated>
+          <form method="POST" action="insert.php" id="form" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="0" id="id">
+            <input type="hidden" name="action" value="insert" id="action">
             <div class="form-row">
               <div class="col">
                 <label for="recipient-name" class="col-form-label">Name:</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+                <input type="text" class="form-control" id="name" name="name">
               </div>
               <div class="col">
                 <label for="pass" class="col-form-label">Passport No:</label>
-                <input type="text" class="form-control" id="passport" name="passport" required autofocus="true">
+                <input type="text" class="form-control" id="passport" name="passport">
               </div>
             </div>
             <div class="form-row">
               <div class="col">
                 <label for="contact" class="col-form-label">Contact No:</label>
-                <input type="text" class="form-control" id="contact" name="contact" required>
+                <input type="text" class="form-control" id="contact" name="contact" >
               </div>
               <div class="col">
                 <label for="email" class="col-form-label">Email:</label>
-                <input type="email" id="email" class="form-control" name="email" required>
+                <input type="email" id="email" class="form-control" name="email">
               </div>
             </div>
             <div class="form-row">
               <div class="col">
                 <label for="total" class="col-form-label">Total Payment:</label>
-                <input type="text" onkeyup="cal()" id="total" class="input form-control" name="total" required>
+                <input type="text" onkeyup="cal()" id="total" class="input form-control" name="total">
               </div>
               <div class="col">
                 <label for="advance" class="col-form-label">Advance Payment:</label>
-                <input type="text"  onkeyup="cal()" id="advance" class="input form-control" name="advance" required>
+                <input type="text"  onkeyup="cal()" id="advance" class="input form-control" name="advance">
               </div>
               <div class="col">
                 <label for="due" class="col-form-label">Due Payment:</label>
                 <input type="text" id="due" readonly class="form-control" name="due">
               </div>
             </div>
-            <div class="form-group">
+            <div class="form-row">
+            <div class="col">
               <label for="tracking" class="col-form-label">Tracking Id:</label>
-              <input type="text" id="tracking" class="form-control" name="tracking" required>
+              <input type="text" id="tracking" class="form-control" name="tracking">
             </div>
-            <div class="form-group mr-auto">
+            <div class="col">
+              <label for="image" class="col-form-label">Picture:</label>
+              <input type="file" id="image" class="form-control" name="image">
+            </div>
+            </div>
+            <div class="form-group mr-auto mt-2">
               <input type="submit" class=" btn btn-success offset-9" name="submit" value="Submit" id="submit">
               <button type="button" class="btn btn-danger ml-2" data-dismiss="modal">Close</button>
             </div>
@@ -183,7 +177,7 @@
   <!-- ########################################################################### -->
 
   <!-- -- view modal start --  -->
-  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal2 fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -192,44 +186,12 @@
         <div class="modal-body">
           
          <table class="table table-striped table-success border border-gray" id="table">
-          <tr>
-            <td>Name:</td>
-            <td><?php echo $row['name']; ?></td>
-          </tr>
-          <tr>
-            <td>Passport No:</td>
-            <td><?php echo $row['passport_no']; ?></td>
-          </tr>
-          <tr>
-            <td>Contact No:</td>
-            <td><?php echo $row['contact_no']; ?></td>
-          </tr>
-          <tr>
-            <td>Email:</td>
-            <td><?php echo $row['email']; ?></td>
-          </tr>
-          <tr>
-            <td>Total Payment:</td>
-            <td><?php echo $row['total_payment']; ?></td>
-          </tr>
-          <tr>
-            <td>Advance Payment:</td>
-            <td><?php echo $row['advance_payment']; ?></td>
-          </tr>
-          <tr>
-            <td>Due Payment:</td>
-            <td><?php echo $row['due_payment']; ?></td>
-          </tr>
-          <tr>
-            <td>Tracking Id:</td>
-            <td><?php echo $row['tracking_id']; ?></td>
-          </tr>
-         </table> 
-            
+          
+         </table>           
             
             <div class="d-flex">
-              <button type="button" class="btn btn-danger me-auto p2" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-warning offset-8" data-dismiss="modal"><b>Print</b></button>
+              <button type="button" class="btn btn-danger me-auto p2" data-dismiss="modal2">Close</button>
+              <button type="button" class="btn btn-warning offset-8" data-dismiss="modal2"><b>Print</b></button>
             </div>
 
           </form>
@@ -247,29 +209,44 @@
 
   <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 
   <script>
     $(document).ready(function() {
-      $('#example').DataTable();
+      $('#example').dataTable({
+        "processing": true,
+        "ajax": "fetch.php?view-list=1",
+        "columns": [
+            {data: 'id'},
+            {data: 'name'},
+            {data: 'passport_no'},
+            {data: 'contact_no'},
+            {data: 'total_payment'},
+            {data: 'advance_payment'},
+            {data: 'due_payment'},
+            {data: 'tracking_id'},
+            {data: 'action'}
+        ]
+    });
 
       // view Modal fucntion start
       $('.view-btn').on('click',function() {        
+        $('#table').html('');
+        var id = $(this).attr('data-id');
         
-        id: $(this).attr('data-id');
-        
-        // $.ajax({
-        //   url: 'show.php',
-        //   type: 'POST',
-        //   data: {},
-        //   success: function(response) {
-        //     $('#exampleModal2').html(response);
-        //   }
-        // });
-        $('#exampleModal2').modal('show');        
+        $.ajax({
+          url: 'fetch.php?view-id='+id,
+          type: 'GET',
+          success: function(response) {
+            console.log(response);
+            $('#table').html(response);
+            $('#exampleModal2').modal('show');
+          }
+        });
+                
       });
-
-      $('.edit-data').on('click', function() {
+      $("#example").delegate(".edit-data", "click", function(){
         var userid = $(this).data("id");
 
         $.ajax({
@@ -282,6 +259,7 @@
           success: function(data) {
             console.log(data);
             $('#exampleModal').modal('show');
+            $('#id').val(data.id);
             $('#name').val(data.name);
             $('#passport').val(data.passport_no);
             $('#contact').val(data.contact_no);
@@ -290,6 +268,7 @@
             $('#advance').val(data.advance_payment);
             $('#due').val(data.due_payment);
             $('#tracking').val(data.tracking_id);
+            $('#action').val('update');
             $('#submit').val("Update");
             $('#exampleModalLabel').html("Update Record");
           }
@@ -336,6 +315,8 @@
       $('.add').on('click', function() {
         $('#form')[0].reset();
         $('#exampleModal').modal('show');
+        $('#action').val('insert');
+        $('#id').val('0');
         $('#exampleModalLabel').html("Add Record");
         $('#submit').val("Submit");
       });
@@ -345,7 +326,6 @@
         $('#exampleModal2').modal('show');
       });
 
-      $('#example').DataTable();
 
 
     });
