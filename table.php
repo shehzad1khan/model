@@ -19,7 +19,7 @@
 <body>
   <div class="row">
     <div class="col-md-1 ml-auto"></div>
-    <div class="col-md-10 col-lg-7">
+    <div class="col-md-10 col-lg-10">
       <!---- Alert Record Inserted ---->
       <?php if (isset($_GET['record']) && $_GET['record'] == 'inserted') { ?>
         <div class="alert alert-success alert-dismissible fade show col-7" role="alert">
