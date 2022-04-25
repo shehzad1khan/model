@@ -14,7 +14,7 @@
         $query = "SELECT * FROM traders WHERE id = '$id'";
         $result = mysqli_query($link, $query);
         $row = mysqli_fetch_array($result);
-        echo '<tr> <th>Name:</th><td>'.$row['name'].'</td> </tr> <tr> <th>Passport No:</th> <td>'.$row['passport_no'].'</td> </tr> <tr> <th>Contact No:</th> <td>'.$row['contact_no'].'</td> </tr> <tr> <th>Email:</th> <td>'.$row['email'].'</td> </tr> <tr> <th>Total Payment:</th> <td>'.$row['total_payment'].'</td> </tr> <tr> <th>Advance Payment:</th> <td>'.$row['advance_payment'].'</td> </tr> <tr> <th>Due Payment:</th> <td>'.$row['due_payment'].'</td> <tr> <th>Tracking Id:</th> <td>'.$row['tracking_id'].'</td> </tr> </tr>';
+        echo '<tr><th>Name:</th><td>'.$row['name'].'</td></tr><tr><th>Passport No:</th> <td>'.$row['passport_no'].'</td></tr><tr><th>Contact No:</th><td>'.$row['contact_no'].'</td></tr><tr><th>Email:</th><td>'.$row['email'].'</td></tr><tr> <th>Total Payment:</th><td>'.$row['total_payment'].'</td></tr><tr><th>Advance Payment:</th><td>'.$row['advance_payment'].'</td></tr><tr><th>Due Payment:</th> <td>'.$row['due_payment'].'</td><tr><th>Tracking Id:</th><td>'.$row['tracking_id'].'</td></tr></tr>';
     }
 
     if(isset($_GET['view-list'])){
@@ -31,7 +31,10 @@
             // Delete Button
             $deleteButton = '<a href="delete.php? id='.$row['id'].'" data-id="'.$row['id'].'"><i class="bi bi-trash3-fill text-danger"></i></a>';
 
-            $action = $updateButton." ".$deleteButton;
+            // View Button
+            $viewButton = '<a href="#" class="view-data" data-id="'.$row['id'].'"><i class="bi bi-eye-fill text-success"></i></a>';
+
+            $action = $updateButton." ".$deleteButton." ".$viewButton;
             $array[] = array(
                "id" => $row['id'],
                "name" => $row['name'],

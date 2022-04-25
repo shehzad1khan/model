@@ -5,7 +5,7 @@
        $id = $_GET['id'];
        $query = "SELECT * FROM traders WHERE id = '$id'";
        $result = mysqli_query($link, $query);
-       $row1 = mysqli_fetch_array($result);
+       $row = mysqli_fetch_array($result);
        echo json_encode($row);
     }
     ?>
