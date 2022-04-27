@@ -3,7 +3,7 @@
 
     if(isset($_GET['id'])){
        $id = $_GET['id'];
-       $query = "SELECT * FROM traders WHERE id = '$id'";
+       $query = "SELECT * FROM traders  WHERE id = '$id'";
        $result = mysqli_query($link, $query);
        $row = mysqli_fetch_array($result);
        echo json_encode($row);
@@ -29,7 +29,7 @@
             $updateButton = '<a href="#" data-id="'.$row['id'].'" class="edit-data"><i class="bi bi-pencil-square text-info"></i></a>';
             
             // Delete Button
-            $deleteButton = '<a href="delete.php? id='.$row['id'].'" data-id="'.$row['id'].'"><i class="bi bi-trash3-fill text-danger"></i></a>';
+            $deleteButton = '<a href="../delete.php? id='.$row['id'].'" data-id="'.$row['id'].'"><i class="bi bi-trash3-fill text-danger"></i></a>';
 
             // View Button
             $viewButton = '<a href="#" class="view-data" data-id="'.$row['id'].'"><i class="bi bi-eye-fill text-success"></i></a>';

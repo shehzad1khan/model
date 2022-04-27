@@ -22,7 +22,7 @@ session_start();
         $result = mysqli_query($link, $insert);
         move_uploaded_file($_FILES['image']['tmp_name'], $target);
         if($result){
-            header("location: table.php?record=inserted");
+            header("location:dashboard/list.php?record=inserted");
         }
     }
     elseif($_POST['action'] == 'update'){
@@ -30,7 +30,7 @@ session_start();
         $update = "UPDATE traders SET name = '$name', passport_no = '$passport', contact_no = '$contact', total_payment = '$total', advance_payment = '$advance', due_payment = '$due', tracking_id = '$tracking', email = '$email' WHERE id = '$id'";
         $result = mysqli_query($link, $update);
         if($result){
-            header("location: table.php?record=updated");
+            header("location:dashboard/list.php?record=updated");
         }
     }
 

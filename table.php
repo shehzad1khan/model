@@ -8,7 +8,7 @@
   <title>Table</title>
 
   <!-- online CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="assets/bootstrap-5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">  
 
@@ -31,7 +31,7 @@
       <?php if (isset($_GET['record']) && $_GET['record'] == 'inserted') { ?>
         <div class="alert alert-success alert-dismissible fade show col-12" role="alert">
           <strong>Success!</strong> Record inserted successfully.
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div> <?php } ?>
@@ -40,7 +40,7 @@
       <?php if (isset($_GET['record']) && $_GET['record'] == 'deleted') { ?>
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
           <strong>Success!</strong> Record Deleted successfully.
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -49,7 +49,7 @@
       <?php if (isset($_GET['record']) && $_GET['record'] == 'updated') { ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
           <strong>Success!</strong> Record Updated successfully.
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -61,7 +61,7 @@
       <h3 class="offset-4">E-Commerce Business Traders</h3>
 
       <!-- -- Table Start here -- -->
-      <table id="example" class="border border-gray table table-responsive" style="width:auto">
+      <table id="example" class="border border-gray table table-responsive table-hover" style="width:auto">
         <thead>
           <tr>
             <th>Id</th>
@@ -96,13 +96,12 @@
 
 
   <!-- //////--Form Modal start--///// -->
-
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title offset-5" id="exampleModalLabel">ADD RECORD</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -157,7 +156,7 @@
             </div>
             <div class="form-group mr-auto mt-2">
               <input type="submit" class=" btn btn-success offset-9" name="submit" value="Submit" id="submit">
-              <button type="button" class="btn btn-danger ml-2" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-danger ml-2" data-bs-dismiss="modal">Close</button>
             </div>
 
           </form>
@@ -171,7 +170,7 @@
   <!-- ########################################################################### -->
 
   <!-- -- view modal start --  -->
-  <div class="modal  fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -184,8 +183,8 @@
          </table>           
             
             <div class="d-flex">
-              <button type="button" class="btn btn-danger me-auto p2" data-dismiss="modal2">Close</button>
-              <button type="button" class="btn btn-warning offset-8" data-dismiss="modal2"><b>Print</b></button>
+              <button type="button" class="btn btn-danger me-auto p2" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-warning offset-8" data-bs-dismiss="modal"><b>Print</b></button>
             </div>
 
           </form>
@@ -195,7 +194,7 @@
   </div>
   <!-- --view modal End-- -->
 
-  <!-- Bootstrap core JavaScript-->  
+  <!-- Bootstrap core JavaScript-->   
 
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
@@ -203,7 +202,8 @@
 
   <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="assets/bootstrap-5.1.3/dist/js/bootstrap.min.js"></script>
+  <script src="assets/bootstrap-5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
     $(document).ready(function() {
