@@ -73,20 +73,66 @@
          echo json_encode($dataset);
     }
 
-    if(isset($_POST['report'])){
-         $fromdate = $_POST['from'];
-         $todate = $_POST['to'];
-         $fromdate=date_create($fromdate);
-         $fromdate=date_format($fromdate,"d-m-Y");
+   //  if(isset($_POST['report'])){
+   //       $fromdate = $_POST['from'];
+   //       $todate = $_POST['to'];
+   //       $fromdate=date_create($fromdate);
+   //       $fromdate=date_format($fromdate,"d-m-Y");
         
-         $todate=date_create($todate);
-         $todate = date_format($todate,"d-m-Y");
-         $query = "SELECT * FROM traders WHERE date BETWEEN '" . $fromdate . "' AND  '" . $todate . "'
-         ORDER by id DESC";
-         $result = mysqli_query($link, $query);
-         while ($row = mysqli_fetch_array($result)){
-            echo "<tr><td>".$row['id']."</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>";
+   //       $todate=date_create($todate);
+   //       $todate = date_format($todate,"d-m-Y");
+   //       $query = "SELECT * FROM traders WHERE date BETWEEN '" . $fromdate . "' AND  '" . $todate . "'
+   //       ORDER by id DESC";
+   //       $result = mysqli_query($link, $query);
+   //       while ($row = mysqli_fetch_array($result)){
+   //          echo "<tr><td>".$row['id']."</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>";
 
+   //       }
+   //  }
+
+    if(isset($_POST['from'], $_POST['to']))
+    {
+      $output = '';
+       $select = "SELECT * FROM traders WHERE date BETWEEN '" . $_POST['from'] . "' AND  '" . $_POST['to'] . "'";
+         $result = mysqli_query($link, $select);
+         $output .= '<table class="table table-info table-striped table-hover">
+         <thead>
+           <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Passport</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Total Pay</th>
+            <th scope="col">Advance Pay</th>
+            <th scope="col">Due Pay</th>
+            <th scope="col">Track Id</th>
+            <th scope="col">Date</th>
+           </tr>
+         </thead>
+         <tbody class="table-info">
+         ';
+         if(mysqli_num_rows($result) > 0){
+            while($row = mysqli_fetch_array($result)){
+                  $output .= '
+                  <tr>'.$row['id'].'</tr>
+                  <tr>'.$row['name'].'</tr>
+                  <tr>'.$row['passport_no'].'</tr>
+                  <tr>'.$row['contact_no'].'</tr>
+                  <tr>'.$row['total_payment'].'</tr>
+                  <tr>'.$row['advance_payment'].'</tr>
+                  <tr>'.$row['due_payment'].'</tr>
+                  <tr>'.$row['tracking_id'].'</tr>
+                  <tr>'.$row['date'].'</tr>
+                  ';           
+            }            
          }
+         else{
+            $output .= '<tr>
+                          <td colspan="5">No Data Found</td>
+                        </tr>
+                        ';
+            }
+         $output .= '</tbody> </table>';
+         echo $output;         
     }
 ?>

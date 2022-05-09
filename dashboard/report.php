@@ -1,3 +1,10 @@
+<?php 
+  $link = mysqli_connect("localhost", "root", "", "e-commerce");
+  $sql = "SELECT * FROM traders";
+    $result = mysqli_query($link, $sql);
+    $count = mysqli_num_rows($result);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,13 +12,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <title>Report</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <!-- Custom Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 
     <link href="css/datepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
 </head>
 
@@ -260,13 +268,13 @@
             <div class="container-fluid">
              <div class="row">
                  <div class="col-md-12">
-                 <table class="table table-info table-striped table-hover">
+                 <table class="table table-info table-striped table-hover" id="result">
                      <div class="offset-3 sale_filter">
                          <label>Search</label>
                          <label>From:</label>
-                         <input type="date" name="from" id="from">
+                         <input type="text" name="from" id="from" placeholder="From Date">
                          <label>To:</label>
-                         <input type="date" id="to"name="to">
+                         <input type="text" name="to"  id="to" placeholder="To Date">
                          <button type="button" value="Search" id="search" name="search" class="btn btn-primary btn-sm">Search</button>
                      </div>
                    <thead>
@@ -283,7 +291,26 @@
                     </tr>
                   </thead>
 
-                  <tbody class="table-info" id="result">
+                  <tbody class="table-info">
+                  <?php 
+                  while($row = mysqli_fetch_array($result))
+                  { ?>
+                   <tr>
+                        <th scope="row"><?php echo $row['id']; ?></th>
+                        <td><?php echo $row['name']; ?></td>
+                        <td><?php echo $row['passport_no']; ?></td>
+                        <td><?php echo $row['contact_no']; ?></td>
+                        <td><?php echo $row['total_payment']; ?></td>
+                        <td><?php echo $row['advance_payment']; ?></td>
+                        <td><?php echo $row['due_payment']; ?></td>
+                        <td><?php echo $row['tracking_id']; ?></td>
+                        <td><?php echo $row['date']; ?></td>
+
+                   </tr>   
+                  
+                  <?php
+                 }
+                  ?>                
                                        
                   </tbody>
                   <tfoot>
@@ -362,22 +389,49 @@
 //     }).datepicker("setDate", "0");  
     
 
+// $('#search').click(function(){
+//     var from = $('#from').val();
+//     var to = $('#to').val();
+//     var report = 'report';
+//     $.ajax({        
+//         url: '../fetch.php',
+//         type: 'POST',
+//         data: {from:from,to:to,report:report},
+//         success: function(data){
+//             $('#result').html(data);
+//         }
+//     });
+// });
+
+$.datepicker.setDefaults({
+    dateFormat: 'dd-mm-yy'
+});
+$(function(){
+    $("#from").datepicker();
+    $("#to").datepicker();
+});
 $('#search').click(function(){
     var from = $('#from').val();
     var to = $('#to').val();
-    var report = 'report';
-    $.ajax({        
-        url: '../fetch.php',
-        type: 'POST',
-        data: {from:from,to:to,report:report},
-        success: function(data){
-            $('#result').html(data);
-        }
-    });
+    if(from != '' && to != '')
+    {
+        $.ajax({
+            url: '../fetch.php',
+            type: 'POST',
+            data: {from:from,to:to},
+            success: function(data){
+                $('#result').html(data);
+            }
+        })
+
+    }
+    else{
+        alert("Please Select Date");
+    }
 });
 
 
-    });
+});
 </script>
 
 
