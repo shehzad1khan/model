@@ -114,15 +114,17 @@
          if(mysqli_num_rows($result) > 0){
             while($row = mysqli_fetch_array($result)){
                   $output .= '
-                  <tr>'.$row['id'].'</tr>
-                  <tr>'.$row['name'].'</tr>
-                  <tr>'.$row['passport_no'].'</tr>
-                  <tr>'.$row['contact_no'].'</tr>
-                  <tr>'.$row['total_payment'].'</tr>
-                  <tr>'.$row['advance_payment'].'</tr>
-                  <tr>'.$row['due_payment'].'</tr>
-                  <tr>'.$row['tracking_id'].'</tr>
-                  <tr>'.$row['date'].'</tr>
+                  <tr>
+                  <td>'.$row['id'].'</td>
+                  <td>'.$row['name'].'</td>
+                  <td>'.$row['passport_no'].'</td>
+                  <td>'.$row['contact_no'].'</td>
+                  <td>'.$row['total_payment'].'</td>
+                  <td>'.$row['advance_payment'].'</td>
+                  <td>'.$row['due_payment'].'</td>
+                  <td>'.$row['tracking_id'].'</td>
+                  <td>'.$row['date'].'</td>
+                  </tr>
                   ';           
             }            
          }
