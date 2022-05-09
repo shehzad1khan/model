@@ -17,6 +17,19 @@
         echo '<tr><th>Name:</th><td>'.$row['name'].'</td></tr><tr><th>Passport No:</th> <td>s</td></tr><tr><th>Contact No:</th><td>a</td></tr><tr><th>Email:</th><td>b</td></tr><tr> <th>Total Payment:</th><td>c</td></tr><tr><th>Advance Payment:</th><td>d</td></tr><tr><th>Due Payment:</th> <td>f</td><tr><th>Tracking Id:</th><td>g</td></tr></tr>';
     }
 
+
+    if(isset($_GET['search'])){
+      $fromdate = $_GET['from'];
+      $todate = $_GET['to'];
+      $query = "SELECT * FROM traders WHERE date BETWEEN '" . $fromdate . "' AND  '" . $todate . "'
+      ORDER by id DESC";
+      $result = mysqli_query($link, $query);
+      $row = mysqli_fetch_assoc($result);
+      echo '<tr><th>Name:</th><td>'.$row['name'].'</td></tr><tr><th>Passport No:</th> <td>s</td></tr><tr><th>Contact No:</th><td>a</td></tr><tr><th>Email:</th><td>b</td></tr><tr> <th>Total Payment:</th><td>c</td></tr><tr><th>Advance Payment:</th><td>d</td></tr><tr><th>Due Payment:</th> <td>f</td><tr><th>Tracking Id:</th><td>g</td></tr></tr>';
+  }
+
+
+
     if(isset($_GET['view-list'])){
         // fetch records
          $sql = "select * from traders";
@@ -58,5 +71,22 @@
  
 
          echo json_encode($dataset);
+    }
+
+    if(isset($_POST['report'])){
+         $fromdate = $_POST['from'];
+         $todate = $_POST['to'];
+         $fromdate=date_create($fromdate);
+         $fromdate=date_format($fromdate,"d-m-Y");
+        
+         $todate=date_create($todate);
+         $todate = date_format($todate,"d-m-Y");
+         $query = "SELECT * FROM traders WHERE date BETWEEN '" . $fromdate . "' AND  '" . $todate . "'
+         ORDER by id DESC";
+         $result = mysqli_query($link, $query);
+         while ($row = mysqli_fetch_array($result)){
+            echo "<tr><td>".$row['id']."</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>";
+
+         }
     }
 ?>

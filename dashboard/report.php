@@ -11,6 +11,8 @@
     <!-- Custom Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 
+    <link href="css/datepicker.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -235,22 +237,7 @@
         <!--**********************************
             Sidebar start
         ***********************************-->
-        <div class="nk-sidebar">           
-            <div class="nk-nav-scroll">
-                <ul class="metismenu" id="menu">
-                    <li class="nav-label">Dashboard</li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()"      aria-expanded="false">
-                        <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="./list.php">List</a></li>
-                            <!-- <li><a href="./index-2.html">Home 2</a></li> -->
-                        </ul>
-                    </li>
-                 </ul>
-            </div>
-        </div>
+        <?php include('include/sidenav.php'); ?>
         <!--**********************************
             Sidebar end
         ***********************************-->
@@ -273,16 +260,14 @@
             <div class="container-fluid">
              <div class="row">
                  <div class="col-md-12">
-                 <table class="table table-warning table-striped table-hover">
-                     <div class="offset-3">
-                        <form>
+                 <table class="table table-info table-striped table-hover">
+                     <div class="offset-3 sale_filter">
                          <label>Search</label>
                          <label>From:</label>
-                         <input type="text" id="fromdate">
+                         <input type="date" name="from" id="from">
                          <label>To:</label>
-                         <input type="text" id="todate">
-                         <input type="submit" value="Search" class="btn btn-primary btn-sm">
-                        </form>
+                         <input type="date" id="to"name="to">
+                         <button type="button" value="Search" id="search" name="search" class="btn btn-primary btn-sm">Search</button>
                      </div>
                    <thead>
                     <tr>
@@ -297,31 +282,10 @@
                       <th scope="col">Date</th>
                     </tr>
                   </thead>
-                   <?php
-                   $link = mysqli_connect("localhost", "root", "", "e-commerce");
-                    $sql = "SELECT * FROM traders";
-                    $query = mysqli_query($link, $sql);
-                    $rowcount = mysqli_num_rows($query);
 
-                    for($j = 1; $j <= $rowcount; $j++){
-
-                        $row = mysqli_fetch_array($query);                   
-                     ?>
-
-                  <tbody>
-                    <tr>
-                      <th><?php echo $j ?></th>
-                      <td><?php echo $row['name'] ?></td>
-                      <td><?php echo $row['passport_no'] ?></td>
-                      <td><?php echo $row['contact_no'] ?></td>
-                      <td><?php echo $row['total_payment'] ?></td>
-                      <td><?php echo $row['advance_payment'] ?></td>
-                      <td><?php echo $row['due_payment'] ?></td>
-                      <td><?php echo $row['tracking_id'] ?></td>
-                      <td><?php echo $row['date'] ?></td>
-                    </tr>                   
+                  <tbody class="table-info" id="result">
+                                       
                   </tbody>
-                  <?php } ?>
                   <tfoot>
                     <tr>
                     <th scope="col">#</th>
@@ -372,6 +336,8 @@
     <script src="js/gleek.js"></script>
     <script src="js/styleSwitcher.js"></script>
 
+    <script src="js/datepicker.min.js"></script>
+
   <!-- ***** Online script links ***** -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
@@ -384,15 +350,32 @@
 
 <script>
     $(document).ready(function() {
-  $("#fromdate").datepicker({
-    dateFormat: 'dd-mm-yy',  
-   }).datepicker("setDate", "0");
-   
-    $("#todate").datepicker({
-    dateFormat: 'dd-mm-yy',
-    }).datepicker("setDate", "0");
+//   $("#fromdate").datepicker({
+//     changeday: "next",
+//     changeMonth: true,
+//     changeYear: true,
+//     dateFormat: 'dd-mm-yy',  
+//    }).datepicker("setDate", "0");
+
+//     $("#todate").datepicker({
+//     dateFormat: 'dd-mm-yy',
+//     }).datepicker("setDate", "0");  
     
-    
+
+$('#search').click(function(){
+    var from = $('#from').val();
+    var to = $('#to').val();
+    var report = 'report';
+    $.ajax({        
+        url: '../fetch.php',
+        type: 'POST',
+        data: {from:from,to:to,report:report},
+        success: function(data){
+            $('#result').html(data);
+        }
+    });
+});
+
 
     });
 </script>
