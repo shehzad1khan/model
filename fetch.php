@@ -17,6 +17,19 @@
         echo '<tr><th>Name:</th><td>'.$row['name'].'</td></tr><tr><th>Passport No:</th> <td>s</td></tr><tr><th>Contact No:</th><td>a</td></tr><tr><th>Email:</th><td>b</td></tr><tr> <th>Total Payment:</th><td>c</td></tr><tr><th>Advance Payment:</th><td>d</td></tr><tr><th>Due Payment:</th> <td>f</td><tr><th>Tracking Id:</th><td>g</td></tr></tr>';
     }
 
+
+    if(isset($_GET['search'])){
+      $fromdate = $_GET['from'];
+      $todate = $_GET['to'];
+      $query = "SELECT * FROM traders WHERE date BETWEEN '" . $fromdate . "' AND  '" . $todate . "'
+      ORDER by id DESC";
+      $result = mysqli_query($link, $query);
+      $row = mysqli_fetch_assoc($result);
+      echo '<tr><th>Name:</th><td>'.$row['name'].'</td></tr><tr><th>Passport No:</th> <td>s</td></tr><tr><th>Contact No:</th><td>a</td></tr><tr><th>Email:</th><td>b</td></tr><tr> <th>Total Payment:</th><td>c</td></tr><tr><th>Advance Payment:</th><td>d</td></tr><tr><th>Due Payment:</th> <td>f</td><tr><th>Tracking Id:</th><td>g</td></tr></tr>';
+  }
+
+
+
     if(isset($_GET['view-list'])){
         // fetch records
          $sql = "select * from traders order by id desc";
@@ -60,13 +73,31 @@
          echo json_encode($dataset);
     }
 
+<<<<<<< HEAD
+=======
+   //  if(isset($_POST['report'])){
+   //       $fromdate = $_POST['from'];
+   //       $todate = $_POST['to'];
+   //       $fromdate=date_create($fromdate);
+   //       $fromdate=date_format($fromdate,"d-m-Y");
+        
+   //       $todate=date_create($todate);
+   //       $todate = date_format($todate,"d-m-Y");
+   //       $query = "SELECT * FROM traders WHERE date BETWEEN '" . $fromdate . "' AND  '" . $todate . "'
+   //       ORDER by id DESC";
+   //       $result = mysqli_query($link, $query);
+   //       while ($row = mysqli_fetch_array($result)){
+   //          echo "<tr><td>".$row['id']."</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>";
+
+   //       }
+   //  }
+
+>>>>>>> 076916be21435dca7c0ca27e92ce29dde8389af2
     if(isset($_POST['from'], $_POST['to']))
     {
       $output = '';
        $select = "SELECT * FROM traders WHERE date BETWEEN '" . $_POST['from'] . "' AND  '" . $_POST['to'] . "'";
          $result = mysqli_query($link, $select);
-         $count = mysqli_num_rows($result);
-         
          $output .= '<table class="table table-info table-striped table-hover">
          <thead>
            <tr>
@@ -102,12 +133,19 @@
          }
          else{
             $output .= '<tr>
+<<<<<<< HEAD
                           <td colspan="12" class="text-center">No Data Found</td>
+=======
+                          <td colspan="5">No Data Found</td>
+>>>>>>> 076916be21435dca7c0ca27e92ce29dde8389af2
                         </tr>
                         ';
             }
          $output .= '</tbody> </table>';
          echo $output;         
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 076916be21435dca7c0ca27e92ce29dde8389af2
 ?>
