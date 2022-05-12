@@ -73,8 +73,6 @@
          echo json_encode($dataset);
     }
 
-<<<<<<< HEAD
-=======
    //  if(isset($_POST['report'])){
    //       $fromdate = $_POST['from'];
    //       $todate = $_POST['to'];
@@ -92,7 +90,6 @@
    //       }
    //  }
 
->>>>>>> 076916be21435dca7c0ca27e92ce29dde8389af2
     if(isset($_POST['from'], $_POST['to']))
     {
       $output = '';
@@ -144,8 +141,4 @@
          $output .= '</tbody> </table>';
          echo $output;         
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> 076916be21435dca7c0ca27e92ce29dde8389af2
 ?>
