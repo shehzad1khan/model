@@ -13,12 +13,11 @@ session_start();
    if(mysqli_num_rows($query) > 0)
    {
     while($row = mysqli_fetch_array($query)){
-      session_start();
        $_SESSION['username'] = $row['username'];
        $_SESSION['userid'] = $row['id'];
        $_SESSION['name'] = $row['name'];
        
-       header("location:table.php");
+       header("location:index.php");
     }
     
    } else{

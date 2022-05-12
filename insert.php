@@ -16,13 +16,21 @@ session_start();
     
 
     if($_POST['action'] == 'insert'){ 
+        
         $user_id = $_SESSION['userid'];      
         $date = date('d-m-Y');
         $insert = "INSERT INTO traders (name, passport_no, contact_no, total_payment, advance_payment, due_payment, tracking_id, email, image,date,user_id) VALUES ('$name', '$passport', '$contact', '$total', '$advance', '$due', '$tracking', '$email', '$img', '$date','$user_id')";
+        $result2 = mysqli_query($link, $insert);
+        move_uploaded_file($_FILES['image']['tmp_name'], $target);       
+        $trader_id = mysqli_insert_id($link);
+
+    
+        $insert = "INSERT INTO `files`(`file`, `trader_id`) VALUES ('$img','$trader_id')";
+        
         $result = mysqli_query($link, $insert);
         move_uploaded_file($_FILES['image']['tmp_name'], $target);
-        if($result){
-            header("location:dashboard/list.php?record=inserted");
+        if($result2){
+            header("location:list.php?record=inserted");
         }
     }
     elseif($_POST['action'] == 'update'){
@@ -30,9 +38,24 @@ session_start();
         $update = "UPDATE traders SET name = '$name', passport_no = '$passport', contact_no = '$contact', total_payment = '$total', advance_payment = '$advance', due_payment = '$due', tracking_id = '$tracking', email = '$email' WHERE id = '$id'";
         $result = mysqli_query($link, $update);
         if($result){
-            header("location:dashboard/list.php?record=updated");
+            header("location:list.php?record=updated");
         }
     }
 
 }
+//    if(isset($_POST['action2'])){
+//     $target = "db_images/".basename($_FILES['image']['name']);
+//     $name = mysqli_real_escape_string($link, $_POST['name']);
+//     $img = $_FILES['image']['name'];
+//     $trader_id = mysqli_insert_id($link);
+
+//     // if($_POST['action2'] == 'files'){
+//         $insert = "INSERT INTO files (name, files, trader_id) VALUES ('$name', '$img', '$trader_id')";
+//         $result = mysqli_query($link, $insert);
+//         move_uploaded_file($_FILES['image']['tmp_name'], $target);
+//         if($result){
+//             header("location:list.php?record=inserted");
+//         }
+//     // }
+//    }
 ?>

@@ -7,7 +7,7 @@
     $sql = "DELETE FROM traders WHERE id = '$id'";
     $query = mysqli_query($link, $sql) or die(mysqli_error($link));
     if($query){
-        header("location:dashboard/list.php?record=deleted");
+        header("location:list.php?record=deleted");
     }
  }
 
