@@ -1,17 +1,30 @@
 
 
 
+
  <?php
-  include "vendor/autoload.php";
-  use Dompdf\Dompdf;
+ require 'dompdf/vendor/autoload.php';
+require_once 'dompdf/autoload.inc.php';
 
-  $dompdf = new Dompdf();
+    use Dompdf\Options;
+    use Dompdf\Dompdf; 
+    
 
-$html = file_get_contents("print.php");
-$dompdf->loadHtml($html); 
+$options = new Options();
+$options->set('defaultFont', 'Courier');
+$options->set('isHtml5ParserEnabled', true);
+$options->setIsHtml5ParserEnabled(true);
+$options->set('isRemoteEnabled', true);
+$options->set('isPhpEnabled', true);
+$options->set('isJavascriptEnabled', true);  
+   
+$dompdf = new Dompdf();
+
+$page = file_get_contents("print.php");
+
+$dompdf->loadHtml($page);
  
-$dompdf->setPaper('A4', 'landscape'); 
-
+$dompdf->setPaper('A4', 'portrait'); 
  
 $dompdf->render(); 
  

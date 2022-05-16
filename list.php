@@ -85,6 +85,36 @@
                 <div class="row">
                     <button class="btn btn-sm btn-success add">Add</button>
                     <div class="col-lg-12 col-sm-12">
+
+           <!---- Alert Record Inserted ---->
+            <?php if (isset($_GET['record']) && $_GET['record'] == 'inserted') { ?>
+             <div class="alert alert-success alert-dismissible fade show col-12" role="alert">
+             <strong>Success!</strong> Record inserted successfully.
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+            </button>
+          </div> <?php } ?>
+
+          <!---- Alert Record Updated ---->
+      <?php if (isset($_GET['record']) && $_GET['record'] == 'updated') { ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Success!</strong> Record Updated successfully.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <?php } ?>
+
+           <!---- Alert Record Deleted ---->
+      <?php if (isset($_GET['record']) && $_GET['record'] == 'deleted') { ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Success!</strong> Record Deleted successfully.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <?php } ?>
+
                         <!-- -- Table Start here -- -->
                         <table id="example" class="table border border-gray table-responsive table-hover table-info" style="width:auto">
                             <thead>
@@ -179,7 +209,8 @@
                     </div>
                     <div class="col">
                       <label for="image" class="col-form-label">Picture:</label>
-                      <input type="files" id="image" class="form-control" name="image">
+                      <input type="file" id="image" class="form-control" name="image[]" multiple>
+                      
                     </div>
                     </div>
                     <div class="form-group mr-auto mt-2">
@@ -267,11 +298,11 @@
 
       // view Modal fucntion start
       $("#example").delegate(".view-data", "click", function(){
-        var userid = $(this).data("id");
+        var id = $(this).data("id");
         
         $.ajax({
           url: 'fetch.php?view-id='+id,
-          type: 'GET',
+          type: "GET",
           success: function(response) {
             console.log(response);
             $('#table').html(response);
@@ -318,14 +349,7 @@
         $('#exampleModalLabel').html("Add Record");
         $('#submit').val("Submit");
       }); 
-
-       // ******* Insert button function *******
-       $('.insert').on('click', function() {
-        $('#insertform')[0].reset();
-        $('#insertmodal').modal('show');
-        $('#action2').val('files');
-        $('#submit').val("Submit");
-      }); 
+      
       
       $("#toastr-success-top-right").on("click",function(){toastr.success("This Is Success Message","Top Right",{timeOut:5e3,closeButton:!0,debug:!1,newestOnTop:!0,progressBar:!0,positionClass:"toast-top-right",preventDuplicates:!0,onclick:null,showDuration:"300",hideDuration:"1000",extendedTimeOut:"1000",showEasing:"swing",hideEasing:"linear",showMethod:"fadeIn",hideMethod:"fadeOut",tapToDismiss:!1})});
 

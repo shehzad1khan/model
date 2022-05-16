@@ -13,8 +13,10 @@
         $id = $_GET['view-id'];
         $query = "SELECT * FROM traders WHERE id = '$id'";
         $result = mysqli_query($link, $query);
-        $row = mysqli_fetch_assoc($result);
-        echo '<tr><th>Name:</th><td>'.$row['name'].'</td></tr><tr><th>Passport No:</th> <td>s</td></tr><tr><th>Contact No:</th><td>a</td></tr><tr><th>Email:</th><td>b</td></tr><tr> <th>Total Payment:</th><td>c</td></tr><tr><th>Advance Payment:</th><td>d</td></tr><tr><th>Due Payment:</th> <td>f</td><tr><th>Tracking Id:</th><td>g</td></tr></tr>';
+        $row = mysqli_fetch_array($result);
+         
+        $html = '<tr><th>Name:</th><td>'.$row['name'].'</td></tr><tr><th>Passport No:</th> <td>'.$row['passport_no'].'</td></tr><tr><th>Contact No:</th><td>'.$row['contact_no'].'</td></tr><tr><th>Email:</th><td>'.$row['email'].'</td></tr><tr> <th>Total Payment:</th><td>'.$row['total_payment'].'</td></tr><tr><th>Advance Payment:</th><td>'.$row['advance_payment'].'</td></tr><tr><th>Due Payment:</th> <td>'.$row['due_payment'].'</td><tr><th>Tracking Id:</th><td>'.$row['tracking_id'].'</td></tr></tr>';
+        echo $html;
     }
 
 
@@ -130,11 +132,7 @@
          }
          else{
             $output .= '<tr>
-<<<<<<< HEAD
-                          <td colspan="12" class="text-center">No Data Found</td>
-=======
-                          <td colspan="5">No Data Found</td>
->>>>>>> 076916be21435dca7c0ca27e92ce29dde8389af2
+                          <td colspan="12" class="text-center">No Data Found</td>                         
                         </tr>
                         ';
             }
