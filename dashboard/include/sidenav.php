@@ -3,7 +3,7 @@
                 <ul class="metismenu" id="menu">
                     <li class="nav-label">Dashboard</li>
                     <li>
-                        <a class="has-arrow" href="../index.html">
+                        <a class="has-arrow" href="http://localhost/shehzad/modal2/model/index.php">
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
                         </a>
                         <ul aria-expanded="false">

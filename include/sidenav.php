@@ -1,7 +1,7 @@
 <div class="nk-sidebar">           
     <div class="nk-nav-scroll">
         <ul class="metismenu" id="menu">
-            <li class="nav-label">Dashboard</li>
+           <a href="http://localhost/shehzad/modal2/model/index.php"> <li class="nav-label">Dashboard</li></a>
             <li>
                 <a href="list.php" aria-expanded="false">
                     <i class="icon-badge list-icon"></i><span class="nav-text">List</span>

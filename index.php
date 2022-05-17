@@ -1,3 +1,7 @@
+        <?php
+         $link = mysqli_connect("localhost", "root", "", "e-commerce");        
+        ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <title>Index Page</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <!-- Pignose Calender -->
@@ -15,11 +19,15 @@
     <link rel="stylesheet" href="./plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
     <!-- Custom Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+   
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">    
+
 
 </head>
 
 <body>
-
+     
     <!--*******************
         Preloader start
     ********************-->
@@ -86,45 +94,93 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-1">
                             <div class="card-body">
-                                <h3 class="card-title text-white">Products Sold</h3>
+                                <h3 class="card-title text-white">Today Entries</h3>
                                 <div class="d-inline-block">
-                                    <h2 class="text-white">4565</h2>
+                                    
+                                    <?php
+                                     $query = "SELECT * FROM traders WHERE date = curdate()";
+                                     $result = mysqli_query($link, $query);
+                                     $count = mysqli_num_rows($result);         
+                            
+                                    if($count > 0){
+                                        echo '<h2 class="text-white mb-0">'.$count.'</h2>';
+                                    }else{
+                                        echo '<h2 class="text-white mb-0">0</h2>';
+                                    }
+                                    ?>
+
                                     <p class="text-white mb-0">Jan - March 2019</p>
                                 </div>
-                                <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
+                                <span class="float-right display-5 opacity-5"><i class="bi bi-pie-chart-fill"></i></span>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-2">
                             <div class="card-body">
-                                <h3 class="card-title text-white">Net Profit</h3>
+                                <h3 class="card-title text-white">This Week Entries</h3>
                                 <div class="d-inline-block">
-                                    <h2 class="text-white">$ 8541</h2>
+
+                                <?php
+                                     $query = "SELECT * FROM traders WHERE date BETWEEN curdate() - INTERVAL 7 DAY AND curdate()";
+                                     $result = mysqli_query($link, $query);
+                                     $count = mysqli_num_rows($result);         
+                            
+                                    if($count > 0){
+                                        echo '<h2 class="text-white mb-0">'.$count.'</h2>';
+                                    }else{
+                                        echo '<h2 class="text-white mb-0">0</h2>';
+                                    }
+                                    ?>
+
                                     <p class="text-white mb-0">Jan - March 2019</p>
                                 </div>
-                                <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
+                                <span class="float-right display-5 opacity-5"><i class="bi bi-book"></i></span>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-3">
                             <div class="card-body">
-                                <h3 class="card-title text-white">New Customers</h3>
+                                <h3 class="card-title text-white">This Month Entries</h3>
                                 <div class="d-inline-block">
-                                    <h2 class="text-white">4565</h2>
+                                    
+                                <?php
+                                     $query = "SELECT * FROM traders WHERE date BETWEEN curdate() - INTERVAL 30 DAY AND curdate()";
+                                     $result = mysqli_query($link, $query);
+                                     $count = mysqli_num_rows($result);         
+                            
+                                    if($count > 0){
+                                        echo '<h2 class="text-white mb-0">'.$count.'</h2>';
+                                    }else{
+                                        echo '<h2 class="text-white mb-0">0</h2>';
+                                    }
+                                    ?>
+
                                     <p class="text-white mb-0">Jan - March 2019</p>
                                 </div>
-                                <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
+                                <span class="float-right display-5 opacity-5"><i class="bi bi-ui-checks-grid"></i></span>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-4">
                             <div class="card-body">
-                                <h3 class="card-title text-white">Customer Satisfaction</h3>
-                                <div class="d-inline-block">
-                                    <h2 class="text-white">99%</h2>
+                                <h3 class="card-title text-white">Total Entries</h3>
+                                <div class="d-inline-block">                            
+
+                                <?php
+                                     $query = "SELECT * FROM traders";
+                                     $result = mysqli_query($link, $query);
+                                     $count = mysqli_num_rows($result);         
+                            
+                                    if($count > 0){
+                                        echo '<h2 class="text-white mb-0">'.$count.'</h2>';
+                                    }else{
+                                        echo '<h2 class="text-white mb-0">0</h2>';
+                                    }
+                                    ?>
+
                                     <p class="text-white mb-0">Jan - March 2019</p>
                                 </div>
                                 <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>

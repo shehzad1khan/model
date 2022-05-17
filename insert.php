@@ -22,7 +22,7 @@ session_start();
     if($_POST['action'] == 'insert'){ 
         
         $user_id = $_SESSION['userid'];      
-        $date = date('d-m-Y');
+        $date = date('Y-m-d');
         $insert = "INSERT INTO traders (name, passport_no, contact_no, total_payment, advance_payment, due_payment, tracking_id, email, image,date,user_id) VALUES ('$name', '$passport', '$contact', '$total', '$advance', '$due', '$tracking', '$email', '$img', '$date','$user_id')";
         $result2 = mysqli_query($link, $insert);
         

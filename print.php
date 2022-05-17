@@ -1,3 +1,5 @@
+<?php 
+$html = '
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,25 +32,26 @@
         <div class="col-md-12"> 
         <table>
         <thead>
-            <h1>Print Invoice</h1> 
+            <h1>Print Invoice</h1> '; ?>
                 <?php
                   
                      $link = mysqli_connect("localhost", "root", "", "e-commerce");
-                     $query = "SELECT * FROM traders where id = '12'";
+                     $query = "SELECT * FROM traders where id = '10'";
                      $result = mysqli_query($link, $query);
                      $row = mysqli_fetch_array($result);
                      $rowcount = mysqli_num_rows($result);
                      if($rowcount > 0){
                     ?>
                     
-                    
-                   <tr><th>S.No</th><td><?php echo $row["id"] ?></td></tr><tr><th>Name</th><td><?php echo $row["name"]?></td></tr>
+                    <?php
+                    $html .= '
+                   <tr><th>S.No</th><td>'.$row["id"] .'</td></tr><tr><th>Name</th><td><?php echo $row["name"]?></td></tr>
                      <tr><th>Passport</th><td><?php echo $row["passport_no"]?></td></tr><tr><th>Contact</th><td><?php echo $row["contact_no"]?></td></tr> 
                      <tr><th>Total Pay</th><td><?php echo $row["total_payment"]?></td></tr> 
                      <tr><th>Advance Pay</th><td><?php echo $row["advance_payment"]?></td></tr> 
                      <tr><th>Due Pay</th><td><?php echo $row["due_payment"]?></td></tr> 
                      <tr><th>Tracking Id</th><td><?php echo  $row["tracking_id"]?></td></tr>
-                     <tr><th>Date</th><td><?php echo  $row["date"]?></td></tr>                 
+                     <tr><th>Date</th><td><?php echo  $row["date"]?></td></tr>    ';?>             
                      
                         
                  <?php }
@@ -57,9 +60,12 @@
                       echo "No Data Found";
                     }  ?>              
                  
-            
+            <?php $html .= '
               </thead>
-              </table>              
+              </table> 
+              '; 
+              echo $html;
+              ?>             
             
         </div>
     </div>
