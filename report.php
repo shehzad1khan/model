@@ -209,7 +209,7 @@
 
  $(document).ready(function() {
     $.datepicker.setDefaults({
-    dateFormat: 'dd-mm-yy'
+    dateFormat: 'yy-mm-dd',
 });
 $(function(){
     $("#from").datepicker();
