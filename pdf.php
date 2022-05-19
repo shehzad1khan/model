@@ -1,10 +1,6 @@
-
-
-
-
- <?php
- require 'dompdf/vendor/autoload.php';
-require_once 'dompdf/autoload.inc.php';
+<?php
+    require 'dompdf/vendor/autoload.php';
+    require_once 'dompdf/autoload.inc.php';
 
     use Dompdf\Dompdf; 
  

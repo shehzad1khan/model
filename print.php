@@ -31,7 +31,7 @@
         <h1>Print Invoice</h1> 
         <table>      
                 <?php                  
-                     $link = mysqli_connect("localhost", "root", "", "e-commerce");
+                     include('database.php');
                      $query = "SELECT * FROM traders where id = '10'";
                      $result = mysqli_query($link, $query);
                      $row = mysqli_fetch_array($result);

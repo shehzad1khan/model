@@ -117,7 +117,7 @@
                     </tr>
                   </thead>
                    <?php
-                   $link = mysqli_connect("localhost", "root", "", "e-commerce");
+                    include('database.php');
                     $sql = "SELECT * FROM traders";
                     $query = mysqli_query($link, $sql);
                     $rowcount = mysqli_num_rows($query);

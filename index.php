@@ -1,6 +1,6 @@
-        <?php
-         $link = mysqli_connect("localhost", "root", "", "e-commerce");        
-        ?>
+<?php
+    include('database.php');                 
+?>
 
 <!DOCTYPE html>
 <html lang="en">

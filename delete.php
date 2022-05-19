@@ -1,5 +1,6 @@
 <?php 
- $link = mysqli_connect("localhost", "root", "", "e-commerce");
+
+include('database.php');
 
  if(isset($_GET['id'])){
     $id = $_GET['id'];

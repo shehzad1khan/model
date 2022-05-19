@@ -241,7 +241,7 @@
                         
                       <div class="d-flex">
                           <button type="button" class="btn btn-danger me-auto p2" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-warning offset-8" data-bs-dismiss="modal"><b>Print</b></button>
+                          <button type="button" class="btn btn-warning offset-8" data-bs-dismiss="modal" id="printBtn"><b>Print</b></button>
                       </div>
                     </div>
                   </div>
@@ -312,6 +312,22 @@
             console.log(response);
             $('#table').html(response);
             $('#exampleModal2').modal('show');
+            $('#printBtn').show();
+          }
+        });                
+      });
+
+      // view Modal fucntion start
+      $("#example").delegate(".attachment-data", "click", function(){
+        var id = $(this).data("id");
+        $.ajax({
+          url: 'fetch.php?attachment='+id,
+          type: "GET",
+          success: function(response) {
+            console.log(response);
+            $('#table').html(response);
+            $('#exampleModal2').modal('show');
+            $('#printBtn').hide();
           }
         });                
       });

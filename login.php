@@ -1,6 +1,6 @@
 <?php 
 session_start();
-  $link = mysqli_connect("localhost", "root", "", "e-commerce");
+include('database.php');
 
  if(isset($_POST['login'])){
   $username = $_POST['username'];

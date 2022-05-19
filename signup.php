@@ -1,6 +1,6 @@
 <?php 
   session_start();
-   $link = mysqli_connect("localhost", "root", "", "e-commerce") or die('connection error');
+  include('database.php');
    
    if(isset($_POST['register'])){
    
@@ -29,8 +29,7 @@
                echo '<div class="alert alert-danger text-center col-md-4 offset-5">Something went wrong</div>';
               }
             }         
-         }   
-   
+         }
 ?>
 
 <!DOCTYPE html>
