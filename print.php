@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +7,7 @@
     <title>Print PDF</title>
 
     <style>
+        #certificatrediv > div{margin:0 auto !important;}
         table, th, td {
             border: 1px solid black;
           
@@ -25,35 +24,34 @@
 
 </head>
 <body>   
-       
-         <div class="row">
-         <div class="col-md-12">   
-        <h1>Print Invoice</h1>
-        <?php
-        $html = ''; 
-        $html .= '<table> ';     
-                                  
-                     include('database.php');
-                     $query = "SELECT * FROM traders where id = '10'";
-                     $result = mysqli_query($link, $query);
-                     $row = mysqli_fetch_array($result);
-                     $rowcount = mysqli_num_rows($result);
-                     if($rowcount > 0){ ?>
-                  <?php                   
-                    $html .= '<tr>
-                   <tr><th>S.No</th><td>'.$row["id"].'</td></tr><tr><th>Name</th><td>'.$row["name"].'</td></tr>
-                   <tr><th>Passport</th><td>'.$row["passport_no"].'</td></tr><tr><th>Contact</th><td>'.$row["contact_no"].'</td></tr> <tr><th>Total Pay</th><td>'.$row["total_payment"].'</td></tr> 
-                   <tr><th>Advance Pay</th><td>'.$row["advance_payment"].'</td></tr> 
-                   <tr><th>Due Pay</th><td>'.$row["due_payment"].'</td></tr> 
-                   <tr><th>Tracking Id</th><td>'.$row["tracking_id"].'</td></tr>
-                   <tr><th>Date</th><td>'.$row["date"].'</td></tr></tr>  ';?>           
-                        
-                 <?php }               
-                 
-            $html .= '</table>';
-            echo $html; ?>           
+    <div class="row">
+        <div class="col-md-12">   
+            <h1>Print Invoice</h1> 
+            <table>
+                <tr>
+                    <th>S.No</th>
+                    <th>S.No</th>
+                    <th>S.No</th>
+                    <th>S.No</th>
+                </tr>
+                <?php
+                    include('database.php');
+                 // WHERE date BETWEEN '" . $_GET['from'] . "' AND  '" . $_GET['to'] . "' -->
+                    $test = 'soem wordk';
+                    $select = "SELECT * FROM traders";
+                    $result = mysqli_query($link, $select);
+                    if(mysqli_num_rows($result) > 0){
+                    while($row = mysqli_fetch_array($result)){
+                    echo '<tr>
+                    <td>'.$row['name'].'</td>
+                    <td>'.$test.'</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>';
+                 } }
+                  ?>                  
+            </table>           
         </div>
     </div>
-    
 </body>
 </html>  
