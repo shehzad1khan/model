@@ -28,26 +28,30 @@
        
          <div class="row">
          <div class="col-md-12">   
-        <h1>Print Invoice</h1> 
-        <table>      
-                <?php                  
+        <h1>Print Invoice</h1>
+        <?php
+        $html = ''; 
+        $html .= '<table> ';     
+                                  
                      include('database.php');
                      $query = "SELECT * FROM traders where id = '10'";
                      $result = mysqli_query($link, $query);
                      $row = mysqli_fetch_array($result);
                      $rowcount = mysqli_num_rows($result);
-                     if($rowcount > 0){ ?>               
-                    <tr>
-                   <tr><th>S.No</th><td><?php echo $row["id"]?></td></tr><tr><th>Name</th><td><?php echo $row["name"]?></td></tr>
-                   <tr><th>Passport</th><td><?php echo $row["passport_no"]?></td></tr><tr><th>Contact</th><td><?php echo $row["contact_no"]?></td></tr> <tr><th>Total Pay</th><td><?php echo $row["total_payment"]?></td></tr> 
-                   <tr><th>Advance Pay</th><td><?php echo $row["advance_payment"]?></td></tr> 
-                   <tr><th>Due Pay</th><td><?php echo $row["due_payment"]?></td></tr> 
-                   <tr><th>Tracking Id</th><td><?php echo $row["tracking_id"]?></td></tr>
-                   <tr><th>Date</th><td><?php echo $row["date"]?></td></tr></tr>             
+                     if($rowcount > 0){ ?>
+                  <?php                   
+                    $html .= '<tr>
+                   <tr><th>S.No</th><td>'.$row["id"].'</td></tr><tr><th>Name</th><td>'.$row["name"].'</td></tr>
+                   <tr><th>Passport</th><td>'.$row["passport_no"].'</td></tr><tr><th>Contact</th><td>'.$row["contact_no"].'</td></tr> <tr><th>Total Pay</th><td>'.$row["total_payment"].'</td></tr> 
+                   <tr><th>Advance Pay</th><td>'.$row["advance_payment"].'</td></tr> 
+                   <tr><th>Due Pay</th><td>'.$row["due_payment"].'</td></tr> 
+                   <tr><th>Tracking Id</th><td>'.$row["tracking_id"].'</td></tr>
+                   <tr><th>Date</th><td>'.$row["date"].'</td></tr></tr>  ';?>           
                         
-                 <?php }   ?>              
+                 <?php }               
                  
-            </table>           
+            $html .= '</table>';
+            echo $html; ?>           
         </div>
     </div>
     
