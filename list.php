@@ -287,7 +287,10 @@
    $(document).ready(function() {
       $('#example').dataTable({
         "processing": true,
-        "ajax": "fetch.php?view-list=1",
+        ajax: {
+        url: "fetch.php?view-list=1",
+        type: "POST",
+        },
         "columns": [
             {data: 'id'},
             {data: 'name'},
