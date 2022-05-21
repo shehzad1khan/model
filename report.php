@@ -93,7 +93,7 @@
             <div class="container-fluid">
              <div class="row">
                  <div class="col-md-12">
-                 <table class="table table-info table-striped table-hover" id="result">
+                 <table class="table table-striped table-hover" id="result">
                  <div class="offset-3 sale_filter">
                          <label>Search</label>
                          <label>From:</label>
@@ -101,9 +101,9 @@
                          <label>To:</label>
                          <input type="text" name="to"  id="to" placeholder="To Date">
                          <button type="button" value="Search" id="search" name="search" class="btn btn-primary btn-sm">Search</button>
-                         <a href="pdf.php" class="btn btn-danger btn-sm offset-2"><b>Print</b></a>
+                         <a href="pdf.php" style="display: none;" class="btn btn-danger btn-sm offset-2" id="printBtn">Print</a>
                      </div>
-                   <thead>
+                   <thead class="bg-info text-white">
                     <tr>
                       <th scope="col">#</th>
                       <th scope="col">Name</th>
@@ -141,7 +141,7 @@
                     </tr>                   
                   </tbody>
                   <?php } ?>
-                  <tfoot>
+                  <tfoot class="bg-info text-white">
                     <tr>
                     <th scope="col">#</th>
                       <th scope="col">Name</th>
@@ -211,10 +211,12 @@
     $.datepicker.setDefaults({
     dateFormat: 'yy-mm-dd',
 });
+
 $(function(){
     $("#from").datepicker();
     $("#to").datepicker();
 });
+
 $('#search').click(function(){
     var from = $('#from').val();
     var to = $('#to').val();
@@ -226,9 +228,10 @@ $('#search').click(function(){
             data: {from:from,to:to},
             success: function(data){
                 $('#result').html(data);
+                $('#printBtn').show();
+                $("a").attr("href", "pdf.php?from="+from+"&to="+to) 
             }
         })
-
     }
     else{
         alert("Please Select Date");

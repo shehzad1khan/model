@@ -4,6 +4,4 @@
 
 ?>
 
-<!-- database password -->
-
 <!-- KHuNLL02l0MGVKlf -->
