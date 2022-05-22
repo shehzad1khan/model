@@ -1,4 +1,34 @@
-<?php include('database.php') ?>
+<?php   
+  include('database.php');
+
+     if(isset($_POST['submit'])){
+     $username = mysqli_real_escape_string($link, $_POST['username']);  
+     $password = md5($_POST['password']);
+     $cpassword = md5($_POST['cpassword']);
+
+     $sql = "SELECT * from users WHERE username = '$username'";
+      $query = mysqli_query($link, $sql);
+      $row = mysqli_fetch_array($query);
+      $rowcount = mysqli_num_rows($query);
+
+      if( $rowcount < 1){
+       echo '<div class="alert alert-danger text-center">Username does not exist</div>';
+      } else{
+     
+     if($password == $cpassword){       
+            $update = "UPDATE users SET password = '$password' WHERE username = '$username'";
+            $query = mysqli_query($link, $update);
+            
+                header("location:profile.php?password=updated");                     
+            }
+            else{
+                echo '<div class="alert alert-danger text-center">New Password and Confirm Password are not matched.</div>';
+                }  
+          
+        } 
+     }
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +36,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Profile</title>
+    <title>Update Password</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -76,34 +106,35 @@
         ***********************************-->
         <div class="content-body">
             <div class="container-fluid">
-         
-           <div class="row"> 
-            <?php 
-             if(isset($_GET['password']) && $_GET['password'] == 'updated'){ ?>   
-                <span class="alert alert-success text-center">Your password is updated successfuly.</span></span>
-             <?php } ?>
-           </div>
 
-        <?php
-          $sql = "SELECT * FROM users WHERE id = ".$_SESSION['userid']."";
-          $result = mysqli_query($link, $sql);
-            $row = mysqli_fetch_assoc($result);
-        ?>   
-        <!-- Card Start -->
-        <div class="card">
-            <div class="card-header">
-                Profile
-            </div>
-            <div class="card-body">
-            <h5 class="card-title"><?php echo $row['name']; ?></h5>
-            <img src="db_images/<?php echo $row['image'];?>" class="mb-5 rounded-1 img-fluid float-end" width="200px" hight="200px">
-            <a href="update_profile.php" class="btn btn-primary mt-auto">Update Profile</a>
-            <a href="update_password.php" class="btn btn-info mt-auto">Update Password</a>
-            </div>
-        </div>
-        <!-- Card End -->
+        <div class="row">
+   	    <div class="col-md-12">
+   	  	<form action="" method="POST">
+             <div class="mb-3 mt-3">
+             <h2>Recover password</h2>
+             </div>
+    <div>         
+    <label for="username" class="form-label">Username</label>
+    <input type="text" class="form-control" autofocus id="username" placeholder="Correct username" name="username" required>
+    </div>
 
-            
+  <div class="mb-3 mt-3">      
+      <label for="pass" class="form-label">New Password:</label>
+      <input type="password" class="form-control" autofocus id="pass" placeholder="New Password" name="password" required>
+  </div>
+  
+  <div class="mt-3 mb-3">    
+    <label for="cpass" class="form-label">Confirm Password:</label>
+    <input type="password" class="form-control" id="cpass" placeholder="Confirm Password" name="cpassword" required>
+  </div>  
+  
+  <div>
+  <input type="submit" class="btn btn-block btn-info form-control" name="submit" value="Change Password">  
+  </div>
+
+       </form>
+   	  </div>
+   </div>
 
             </div>
             <!-- #/ container -->

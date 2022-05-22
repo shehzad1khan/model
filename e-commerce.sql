@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 20, 2022 at 11:20 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.4.15
+-- Host: 127.0.0.1
+-- Generation Time: May 22, 2022 at 07:54 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -197,14 +197,7 @@ INSERT INTO `files` (`id`, `file`, `trader_id`) VALUES
 (33, '1000_F_248812956_JHCAUaC7QxDRkDoTBmm7MrR6cWiKhlVq.jpg', 64),
 (34, 'Good_Food_Display_-_NCI_Visuals_Online.jpg', 66),
 (35, '', 67),
-(36, '2nd-try-transparent-screen.jpg', 68),
-(37, 'Screenshot (10) - Copy.png', 69),
-(38, 'Screenshot (10) - Copy.png', 70),
-(39, 'Screenshot (5).png', 73),
-(40, 'Screenshot (6).png', 73),
-(41, 'Screenshot (12).png', 73),
-(42, 'Screenshot (30).png', 73),
-(43, 'Screenshot (31).png', 73);
+(36, '2nd-try-transparent-screen.jpg', 68);
 
 -- --------------------------------------------------------
 
@@ -247,12 +240,7 @@ INSERT INTO `traders` (`id`, `name`, `passport_no`, `contact_no`, `total_payment
 (64, 'Ishfaq khan', 'DS3435234', '03038148256', '23000', '2022', '20978', 'SH124181568', 'ishfaq@gmial.com', '1000_F_134877501_hLgzK6kMnRvZZpvmhNTf7LrQn0gKHFrp.jpg', '2022-05-11', 3),
 (66, 'Mahaz', 'MA78613425', '03433497654', '23000', '10000', '13000', 'Ma238548989', 'mahaz@gmail.com', 'Good_Food_Display_-_NCI_Visuals_Online.jpg', '2022-05-17', 3),
 (67, '', '', '', '', '', '', '', '', '', '2022-05-14', 3),
-(68, 'Hamza abbassi', 'HA12323453', '03062659487', '64000', '40000', '24000', 'HA3128975', 'hamza@gmail.com', '2nd-try-transparent-screen.jpg', '2022-05-17', 3),
-(69, 'amir khan', '', '', '', '', '', '', '', 'Screenshot (10) - Copy.png', '2022-05-19', 3),
-(70, 'jawad zada', '', '', '', '', '', '', '', '', '2022-05-19', 3),
-(71, '', '', '', '', '', '', '', '', '', '2022-05-19', 3),
-(72, '', '', '', '', '', '', '', '', '', '2022-05-19', 3),
-(73, 'testing', '73894573947', '', '', '', '', '', '', '', '2022-05-19', 3);
+(68, 'Hamza abbassi', 'HA12323453', '03062659487', '64000', '40000', '24000', 'HA3128975', 'hamza@gmail.com', '2nd-try-transparent-screen.jpg', '2022-05-17', 3);
 
 -- --------------------------------------------------------
 
@@ -264,17 +252,19 @@ CREATE TABLE `users` (
   `id` int(100) NOT NULL,
   `name` varchar(200) NOT NULL,
   `username` varchar(200) NOT NULL,
-  `password` varchar(200) NOT NULL
+  `password` varchar(200) NOT NULL,
+  `image` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `username`, `password`) VALUES
-(3, 'admin', 'admin@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
-(13, 'Ali', 'ali@gmail.com', '86318e52f5ed4801abe1d13d509443de'),
-(14, 'khan', 'khan', '9e95f6d797987b7da0fb293a760fe57e');
+INSERT INTO `users` (`id`, `name`, `username`, `password`, `image`) VALUES
+(3, 'admin', 'admin@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', ''),
+(13, 'Ali', 'ali@gmail.com', '86318e52f5ed4801abe1d13d509443de', ''),
+(14, 'khan', 'khan', '9e95f6d797987b7da0fb293a760fe57e', ''),
+(15, 'Shehzad khan', 'shehzad', '4054b2941ba6f1168e8ce90e072b0e8d', 't4.jpg');
 
 --
 -- Indexes for dumped tables
@@ -319,19 +309,19 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `traders`
 --
 ALTER TABLE `traders`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
