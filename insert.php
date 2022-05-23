@@ -69,4 +69,43 @@ include('database.php');
 
 }
 
+if(isset($_POST['file']))
+{
+    $trader_id = $_POST['trader_id'];
+    // File upload configuration 
+    $targetDir = "db_images/"; 
+    $allowTypes = array('jpg','png','jpeg','gif'); 
+        
+    $statusMsg = $errorMsg = $insertValuesSQL = $errorUpload = $errorUploadType = ''; 
+    $fileNames = array_filter($_FILES['image']['name']); 
+    if(!empty($fileNames)){ 
+        foreach($_FILES['image']['name'] as $key=>$val){ 
+            // File upload path 
+            $fileName = basename($_FILES['image']['name'][$key]); 
+            $targetFilePath = $targetDir . $fileName; 
+                
+            // Check whether file type is valid 
+            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                // Upload file to server 
+                if(move_uploaded_file($_FILES["image"]["tmp_name"][$key], $targetFilePath)){ 
+                    // Image db insert sql 
+                    $insertValuesSQL .= "('".$fileName."', '".$trader_id."'),"; 
+                }else{ 
+                    $errorUpload .= $_FILES['image']['name'][$key].' | '; 
+                } 
+        }  
+    }
+    if(!empty($insertValuesSQL)){ 
+        $insertValuesSQL = trim($insertValuesSQL, ','); 
+        // Insert image file name into database 
+        $insert = "INSERT INTO `files`(`file`, `trader_id`)  VALUES $insertValuesSQL";
+        $result = mysqli_query($link, $insert); 
+    }else{ 
+        $statusMsg = "Upload failed! ".$errorMsg; 
+    }
+    if($result){
+        header("location:list.php?record=updated");
+    }
+}
+
 ?>

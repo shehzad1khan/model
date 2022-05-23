@@ -17,8 +17,8 @@
         move_uploaded_file($_FILES['image']['tmp_name'], $target);
            
         if($query){              
-            echo "<div class='alert alert-success'>Post Updated...</div>";
-            header("location:profile.php");
+           // echo "<div class='alert alert-success'>Post Updated...</div>";
+            header("location:profile.php?profile=updated");
               }
               else{
                echo '<div class="alert alert-danger text-center col-md-4 offset-5">Something went wrong</div>';
@@ -104,7 +104,7 @@
     <div class="container-fluid">
 
         <div class="row">
-   	        <div class="">
+   	        <div class="col-md-6 offset-2">
                  <h2>UPDATE PROFILE</h2>
       
         <?php           
@@ -126,7 +126,7 @@
     <input type="hidden" name="image2" value="<?php echo $row['image']; ?>">
   </div>
     <div class="col-12">
-    <button type="submit" name="submit" class="btn btn-primary">Update</button>
+    <button type="submit" name="submit" class="btn btn-block btn-primary">Update</button>
   </div>
 </form>
          <?php } } ?>

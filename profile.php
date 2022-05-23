@@ -84,6 +84,13 @@
              <?php } ?>
            </div>
 
+           <div class="row"> 
+            <?php 
+             if(isset($_GET['profile']) && $_GET['profile'] == 'updated'){ ?>   
+                <span class="alert alert-success text-center">Your Profile is updated...!</span></span>
+             <?php } ?>
+           </div>
+
         <?php
           $sql = "SELECT * FROM users WHERE id = ".$_SESSION['userid']."";
           $result = mysqli_query($link, $sql);
@@ -101,9 +108,7 @@
             <a href="update_password.php" class="btn btn-info mt-auto">Update Password</a>
             </div>
         </div>
-        <!-- Card End -->
-
-            
+        <!-- Card End -->            
 
             </div>
             <!-- #/ container -->
