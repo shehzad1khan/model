@@ -27,7 +27,8 @@ include('database.php');
         $result = mysqli_query($link, $query);
         while($row = mysqli_fetch_array($result))
         {
-            $html .='<tr><td colspan="2"><a href="db_images/'.$row['file'].'" target="_blank">'.$row['file'].'</a></td></tr>';
+            $html .='<tr><td colspan="2"><a href="db_images/'.$row['file'].'" target="_blank">'.$row['file'].'</a></td></tr>       
+                     ';
         }
         echo $html;
     }
@@ -42,8 +43,6 @@ include('database.php');
       $row = mysqli_fetch_assoc($result);
       echo '<tr><th>Name:</th><td>'.$row['name'].'</td></tr><tr><th>Passport No:</th> <td>s</td></tr><tr><th>Contact No:</th><td>a</td></tr><tr><th>Email:</th><td>b</td></tr><tr> <th>Total Payment:</th><td>c</td></tr><tr><th>Advance Payment:</th><td>d</td></tr><tr><th>Due Payment:</th> <td>f</td><tr><th>Tracking Id:</th><td>g</td></tr></tr>';
   }
-
-
 
     if(isset($_GET['view-list'])){
         // fetch records

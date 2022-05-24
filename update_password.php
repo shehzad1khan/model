@@ -107,25 +107,25 @@
         <div class="content-body">
             <div class="container-fluid">
 
-        <div class="row">
-   	    <div class="col-md-12">
+        <div class="row ">
+   	    <div class="col-md-6 offset-2 card">
    	  	<form action="" method="POST">
-             <div class="mb-3 mt-3">
-             <h2>Recover password</h2>
+             <div class="mb-3 mt-3 offset-4">
+             <h2><i>Recover Password</i></h2>
              </div>
     <div>         
     <label for="username" class="form-label">Username</label>
-    <input type="text" class="form-control" autofocus id="username" placeholder="Correct username" name="username" required>
+    <input type="text" class="form-control" autofocus id="username" placeholder="Your Username" name="username" required>
     </div>
 
   <div class="mb-3 mt-3">      
       <label for="pass" class="form-label">New Password:</label>
-      <input type="password" class="form-control" autofocus id="pass" placeholder="New Password" name="password" required>
+      <input type="password" class="form-control" autofocus id="pass" placeholder="************" name="password" required>
   </div>
   
   <div class="mt-3 mb-3">    
     <label for="cpass" class="form-label">Confirm Password:</label>
-    <input type="password" class="form-control" id="cpass" placeholder="Confirm Password" name="cpassword" required>
+    <input type="password" class="form-control" id="cpass" placeholder="************" name="cpassword" required>
   </div>  
   
   <div>

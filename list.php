@@ -212,10 +212,9 @@
                       <label for="tracking" class="col-form-label">Tracking Id:</label>
                       <input type="text" id="tracking" class="form-control" name="tracking">
                     </div>
-                    <div class="col">
+                    <div class="col" id="file-div">
                       <label for="image" class="col-form-label">Picture:</label>
-                      <input type="file" id="image" class="form-control" name="image[]" multiple>
-                      
+                      <input type="file" id="image" class="form-control" name="image[]" multiple>                      
                     </div>
                     </div>
                     <div class="form-group mr-auto mt-2">
@@ -242,17 +241,23 @@
                       <table class="table table-striped table-success border border-gray" id="table">
                         
                       </table>           
-                        
-                      <div class="d-flex">
-                          <button type="button" class="btn btn-danger me-auto p2" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-warning offset-8" data-bs-dismiss="modal" id="printBtn"><b>Print</b></button>
+                      <div class="file-form">
+                        <form action="insert.php" method="POST" enctype="multipart/form-data" >
+                          <input type="hidden" name="trader_id" id="trader_id">
+                          <input type="file" id="image" class="form-control" name="image[]" multiple required>
+                          <input type="submit" class="btn btn-success" name="file" value="Submit">                                   
+                      
+                          <button type="button" class="btn btn-warning" data-bs-dismiss="modal" id="printBtn"><b>Print</b></button>        
+                        </form>                      
+                        </div>
+                        <button type="button" class="btn btn-danger me-auto p2" data-bs-dismiss="modal" id="closebtn">Close</button>
                       </div>
                     </div>
                   </div>
                 </div>
             </div>
               <!-- --view modal End-- -->
-        <!--**********************************
+        <!--*********************************
             Content body end
         ***********************************-->
         
@@ -319,7 +324,9 @@
             console.log(response);
             $('#table').html(response);
             $('#exampleModal2').modal('show');
+            $('.file-form').hide(); 
             $('#printBtn').show();
+            $('#closebtn').show();
           }
         });                
       });
@@ -333,6 +340,8 @@
           success: function(response) {
             console.log(response);
             $('#table').html(response);
+            $('.file-form').show();
+            $('#trader_id').val(id);
             $('#exampleModal2').modal('show');
             $('#printBtn').hide();
           }
@@ -364,6 +373,7 @@
             $('#action').val('update');
             $('#submit').val("Update");
             $('#exampleModalLabel').html("Update Record");
+            $('#file-div').hide();
           }
         });
       });
@@ -376,6 +386,7 @@
         $('#id').val('0');
         $('#exampleModalLabel').html("Add Record");
         $('#submit').val("Submit");
+        $('#file-div').show();
       }); 
       
       
