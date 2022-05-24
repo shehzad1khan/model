@@ -1,6 +1,11 @@
 <?php 
 include('database.php');
 
+session_start();
+if(!isset($_SESSION['userid']))
+header('location:login.php');
+
+
     if(isset($_GET['id'])){
        $id = $_GET['id'];
        $query = "SELECT * FROM traders  WHERE id = '$id'";
@@ -24,14 +29,15 @@ include('database.php');
         $html = '';
         $id = $_GET['attachment'];
         $query = "SELECT * from files where trader_id = '$id'";
-        $result = mysqli_query($link, $query);
-        while($row = mysqli_fetch_array($result))
+        $results = mysqli_query($link, $query);
+        $count = mysqli_num_rows($results);
+        while($rows = mysqli_fetch_array($results))
         {
-            $html .='<tr><td colspan="2"><a href="db_images/'.$row['file'].'" target="_blank">'.$row['file'].'</a></td></tr>       
-                     ';
+            $html .='<tr><td colspan="2"><a href="db_images/'.$rows['file'].'" target="_blank">'.$rows['file'].'</a></td>
+            <td><a href="delete.php?file_id='.$rows['id'].'"><i class="offset-9 bi bi-trash3-fill text-danger"></i></a></td></tr>';
         }
         echo $html;
-    }
+      }
 
 
     if(isset($_GET['search'])){
@@ -152,5 +158,47 @@ include('database.php');
             }
          $output .= '</tbody> </table>';
          echo $output;         
+    }
+
+    if(isset($_GET['detail']))
+    {
+      $data = [];
+      // for current date
+      $query = "SELECT sum(advance_payment) as today_pay , sum(due_payment) as today_due FROM traders WHERE date = curdate()";
+          $result = mysqli_query($link, $query);
+          $row = mysqli_fetch_array($result);
+          $today_pay = $row['today_pay'];
+          $today_due = $row['today_due'];
+          // for week date
+              $query1 = "SELECT sum(advance_payment) as week_pay , sum(due_payment) as week_due FROM traders WHERE date BETWEEN curdate() - INTERVAL 7 DAY AND curdate()";
+                  $result = mysqli_query($link, $query1);
+                  $row = mysqli_fetch_array($result);
+                  $week_pay = $row['week_pay'];
+                  $week_due = $row['week_due'];
+          // for month date
+              $query = "SELECT sum(advance_payment) as month_pay , sum(due_payment) as month_due FROM traders WHERE date BETWEEN curdate() - INTERVAL 30 DAY AND curdate()";
+                  $result = mysqli_query($link, $query);
+                  $row = mysqli_fetch_array($result);
+                  $month_pay = $row['month_pay'];
+                  $month_due = $row['month_due'];
+          // for WHOLE date
+              $query = "SELECT sum(advance_payment) as whole_pay, sum(due_payment) as whole_due FROM traders";
+                  $result = mysqli_query($link, $query);
+                  $row = mysqli_fetch_array($result);
+                  $whole_pay = $row['whole_pay'];
+                  $whole_due = $row['whole_due'];
+
+              $data['today_pay'] = $today_pay;
+              $data['today_due'] = $today_due;
+
+              $data['week_pay'] = $week_pay;
+              $data['week_due'] = $week_due;
+
+              $data['month_pay'] = $month_pay;
+              $data['month_due'] = $month_due;
+              
+              $data['whole_due'] = $whole_due;
+              $data['whole_pay'] = $whole_pay;
+              echo json_encode($data);
     }
 ?>

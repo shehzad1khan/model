@@ -104,7 +104,7 @@ if(isset($_POST['file']))
         $statusMsg = "Upload failed! ".$errorMsg; 
     }
     if($result){
-        header("location:list.php?record=updated");
+        header("location:list.php?new=file");
     }
 }
 

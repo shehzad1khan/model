@@ -1,4 +1,42 @@
-<?php include('database.php') ?>
+<?php include('database.php');
+
+if(isset($_POST['change'])){
+    $password = md5($_POST['password']);
+    $cpassword = md5($_POST['cpassword']);
+
+    if($password == $cpassword){    
+        session_start();   
+           $update = "UPDATE users SET password = '$password' WHERE id = ".$_SESSION['userid']."";
+           $query = mysqli_query($link, $update);
+           move_uploaded_file($_FILES['image']['tmp_name'], $target);
+           
+               header("location:profile.php?password=updated");                     
+           }
+           else{
+               echo '<div class="alert alert-danger text-center">New Password and Confirm Password are not matched.</div>';
+               }
+
+}
+
+   if(isset($_POST['submit'])){  
+    $target = "db_images/".basename($_FILES['image']['name']);    
+    $name = mysqli_real_escape_string($link, $_POST['Name']);    
+    $username = mysqli_real_escape_string($link, $_POST['username']); 
+    $image = $_FILES['image']['name'];   
+
+    if($image == null || $image == ''){
+        $image = $_POST['image2'];
+     }
+     session_start();   
+     $update = "UPDATE users SET name = '$name', image = '$image' WHERE id = ".$_SESSION['userid']."";
+     $query = mysqli_query($link, $update);
+     move_uploaded_file($_FILES['image']['tmp_name'], $target);
+     
+         header("location:profile.php?profile=updated");  
+    
+            }             
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,18 +114,17 @@
         ***********************************-->
         <div class="content-body">
             <div class="container-fluid">
-         
-           <div class="row"> 
-            <?php 
-             if(isset($_GET['password']) && $_GET['password'] == 'updated'){ ?>   
-                <span class="alert alert-success text-center">Your password is updated successfuly.</span></span>
-             <?php } ?>
-           </div>
 
            <div class="row"> 
             <?php 
              if(isset($_GET['profile']) && $_GET['profile'] == 'updated'){ ?>   
                 <span class="alert alert-success text-center">Your Profile is updated...!</span></span>
+             <?php } ?>
+           </div>
+           <div class="row"> 
+            <?php 
+             if(isset($_GET['password']) && $_GET['password'] == 'updated'){ ?>   
+                <span class="alert alert-success text-center">Your Password is updated...!</span></span>
              <?php } ?>
            </div>
 
@@ -101,13 +138,70 @@
             <div class="card-header">
                 Profile
             </div>
-            <div class="card-body">
-            <h5 class="card-title"><?php echo $row['name']; ?></h5>
-            <img src="db_images/<?php echo $row['image'];?>" class="mb-5 rounded-1 img-fluid float-end" width="200px" hight="200px">
-            <a href="update_profile.php" class="btn btn-primary mt-auto">Update Profile</a>
-            <a href="update_password.php" class="btn btn-info mt-auto">Update Password</a>
-            </div>
-        </div>
+        <div class="card-body">
+
+          <div class="col-md-6 float-right">
+               <div class="row">
+                 <h3 class="offset-4 mb-3"><?php echo $row['name']; ?></h3>
+               </div>
+               <div class="row">
+                 <img src="db_images/<?php echo $row['image'];?>" class="mb-5 rounded-5 img-fluid offset-3" style="width: 300px; hight: 300px;">
+               </div>
+          </div>
+
+           <!-- Form Column -->
+        <div class="col-md-6 float-left">
+            <h2 class="offset-4">UPDATE PROFILE</h2>
+      
+        <?php           
+            $select = "SELECT * FROM users where id = ".$_SESSION['userid']."";
+            $selection = mysqli_query($link, $select);
+
+            if(mysqli_num_rows($selection) > 0){
+            while($row = mysqli_fetch_array($selection)){
+        ?>
+         
+            <form class="row g-3" method="post" enctype="multipart/form-data">
+                <div class="col-md-6">
+                  <label for="title" class="form-label">Name:</label>
+                  <input type="text" class="form-control" id="title" name="Name" required value="<?php echo $row['name']; ?>">
+                </div>
+                <div class="col-md-6">
+                  <label for="uname" class="form-label">Username:</label>
+                  <input type="text" class="form-control" id="uname" name="username" required value="<?php echo $row['username']; ?>">
+                </div>
+                <div class="col-md-12">
+                  <label for="img">Profile Picture</label><br>
+                  <input type="file" name="image" id="img" class="form-control" value="<?php echo $row['image']; ?>">
+                  <input type="hidden" name="image2" value="<?php echo $row['image']; ?>">
+                </div>
+                <div class="col-12">
+                    <button type="submit" name="submit" class="btn btn-block btn-primary">Update</button>
+                </div>
+            </form> <br>
+
+            <form class="row g-3" method="post">
+            <div class="mb-3 mt-3">      
+                  <label for="pass" class="form-label">New Password:</label>
+                  <input type="password" class="form-control" id="pass" placeholder="************" name="password" required>
+                  <input type="hidden" name="password2" value="<?php echo $row['password']; ?>">
+                </div>                    
+                <div class="mt-3 mb-3">    
+                    <label for="cpass" class="form-label">Confirm Password:</label>
+                    <input type="password" class="form-control" id="cpass" placeholder="************" name="cpassword" required>
+                    <input type="hidden" name="cpassword2" value="<?php echo $row['password']; ?>">
+                </div>  
+
+                <div class="col-12">
+                    <button type="submit" name="change" class="btn btn-block btn-primary">Change Password</button>
+                </div>
+            </form>
+         <?php } } ?>
+   	           </div>
+
+              </div>
+
+            </div>      
         <!-- Card End -->            
 
             </div>
