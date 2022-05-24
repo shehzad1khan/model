@@ -39,12 +39,11 @@ if(isset($_POST['change'])){
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Profile</title>
+    <title>Ecommerce-Profile</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -113,20 +112,7 @@ if(isset($_POST['change'])){
             Content body start
         ***********************************-->
         <div class="content-body">
-            <div class="container-fluid">
-
-           <div class="row"> 
-            <?php 
-             if(isset($_GET['profile']) && $_GET['profile'] == 'updated'){ ?>   
-                <span class="alert alert-success text-center">Your Profile is updated...!</span></span>
-             <?php } ?>
-           </div>
-           <div class="row"> 
-            <?php 
-             if(isset($_GET['password']) && $_GET['password'] == 'updated'){ ?>   
-                <span class="alert alert-success text-center">Your Password is updated...!</span></span>
-             <?php } ?>
-           </div>
+            <div class="container-fluid">          
 
         <?php
           $sql = "SELECT * FROM users WHERE id = ".$_SESSION['userid']."";
@@ -139,6 +125,20 @@ if(isset($_POST['change'])){
                 Profile
             </div>
         <div class="card-body">
+
+        <div class="row"> 
+            <?php 
+              if(isset($_GET['profile']) && $_GET['profile'] == 'updated'){ ?>   
+                <span class="alert alert-success text-center">Your Profile is updated...!</span></span>
+            <?php } ?>
+        </div>
+           <div class="row"> 
+              <?php 
+                 if(isset($_GET['password']) && $_GET['password'] == 'updated'){ ?>   
+                <span class="alert alert-success text-center">Your Password is updated...!</span></span>
+              <?php } ?>
+           </div>
+
 
           <div class="col-md-6 float-right">
                <div class="row">

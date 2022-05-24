@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Ecommerce-Index</title>
+    <title>Ecommerce-Dashboard</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <!-- Pignose Calender -->
@@ -204,35 +204,11 @@
                         </div>
                     </div> 
                     <div class="col-lg-3 col-sm-6">
-                        <div class="card gradient-7">
-                            <div class="card-body">
-                                <h3 class="card-title text-white">Today Due</h3>
-                                <div class="d-inline-block">
-                                    <h2 class="text-white mb-0" id="today_due">0</h2>
-                                    <p class="text-white mb-0">Jan - March 2019</p>
-                                </div>
-                                <span class="float-right display-5 opacity-5"><i class="bi bi-pie-chart-fill"></i></span>
-                            </div>
-                        </div>
-                    </div> 
-                    <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-6">
                             <div class="card-body">
                                 <h3 class="card-title text-white">Week Payment</h3>
                                 <div class="d-inline-block">
                                     <h2 class="text-white mb-0" id="week_pay">0</h2>
-                                    <p class="text-white mb-0">Jan - March 2019</p>
-                                </div>
-                                <span class="float-right display-5 opacity-5"><i class="bi bi-pie-chart-fill"></i></span>
-                            </div>
-                        </div>
-                    </div> 
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card gradient-5">
-                            <div class="card-body">
-                                <h3 class="card-title text-white">Week Due</h3>
-                                <div class="d-inline-block">
-                                    <h2 class="text-white mb-0" id="week_due">0</h2>
                                     <p class="text-white mb-0">Jan - March 2019</p>
                                 </div>
                                 <span class="float-right display-5 opacity-5"><i class="bi bi-pie-chart-fill"></i></span>
@@ -252,18 +228,6 @@
                         </div>
                     </div> 
                     <div class="col-lg-3 col-sm-6">
-                        <div class="card gradient-3">
-                            <div class="card-body">
-                                <h3 class="card-title text-white">Month Due</h3>
-                                <div class="d-inline-block">
-                                    <h2 class="text-white mb-0" id="month_due">0</h2>
-                                    <p class="text-white mb-0">Jan - March 2019</p>
-                                </div>
-                                <span class="float-right display-5 opacity-5"><i class="bi bi-pie-chart-fill"></i></span>
-                            </div>
-                        </div>
-                    </div> 
-                    <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-2">
                             <div class="card-body">
                                 <h3 class="card-title text-white">Whole Payment</h3>
@@ -275,6 +239,44 @@
                             </div>
                         </div>
                     </div> 
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card gradient-7">
+                            <div class="card-body">
+                                <h3 class="card-title text-white">Today Due</h3>
+                                <div class="d-inline-block">
+                                    <h2 class="text-white mb-0" id="today_due">0</h2>
+                                    <p class="text-white mb-0">Jan - March 2019</p>
+                                </div>
+                                <span class="float-right display-5 opacity-5"><i class="bi bi-pie-chart-fill"></i></span>
+                            </div>
+                        </div>
+                    </div> 
+                   
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card gradient-5">
+                            <div class="card-body">
+                                <h3 class="card-title text-white">Week Due</h3>
+                                <div class="d-inline-block">
+                                    <h2 class="text-white mb-0" id="week_due">0</h2>
+                                    <p class="text-white mb-0">Jan - March 2019</p>
+                                </div>
+                                <span class="float-right display-5 opacity-5"><i class="bi bi-pie-chart-fill"></i></span>
+                            </div>
+                        </div>
+                    </div> 
+                   
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card gradient-3">
+                            <div class="card-body">
+                                <h3 class="card-title text-white">Month Due</h3>
+                                <div class="d-inline-block">
+                                    <h2 class="text-white mb-0" id="month_due">0</h2>
+                                    <p class="text-white mb-0">Jan - March 2019</p>
+                                </div>
+                                <span class="float-right display-5 opacity-5"><i class="bi bi-pie-chart-fill"></i></span>
+                            </div>
+                        </div>
+                    </div>                    
                     <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-1">
                             <div class="card-body">

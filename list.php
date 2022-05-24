@@ -88,9 +88,9 @@
 
             <div class="container-fluid mt-3">
                 <div class="row">
-                    <button class="btn btn-sm btn-success add">Add</button>
-                    <div class="col-lg-12 col-sm-12">
+                <div class="col-lg-12 col-sm-12">
 
+                
            <!---- Alert Record Inserted ---->
             <?php if (isset($_GET['record']) && $_GET['record'] == 'inserted') { ?>
              <div class="alert text-center alert-success alert-dismissible fade show col-12" role="alert">
@@ -129,6 +129,8 @@
           </button>
         </div>
       <?php } ?>
+                    <button class="btn btn-sm btn-success add">Add</button>
+                  
 
                         <!-- -- Table Start here -- -->
                         <table id="example" class="table border border-gray table-responsive table-hover table-info" style="width:auto">
