@@ -36,7 +36,7 @@
                 </tr>
                 <?php
                     include('database.php');
-                    <!-- // WHERE date BETWEEN '" . $_GET['from'] . "' AND  '" . $_GET['to'] . "' -->
+                 // WHERE date BETWEEN '" . $_GET['from'] . "' AND  '" . $_GET['to'] . "' -->
                     $test = 'soem wordk';
                     $select = "SELECT * FROM traders";
                     $result = mysqli_query($link, $select);

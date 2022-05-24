@@ -47,7 +47,7 @@ include('database.php');
 
     if(isset($_GET['view-list'])){
         // fetch records
-         $sql = "select * from traders order by id desc";
+         $sql = "SELECT * FROM `traders` ORDER BY `id` DESC";
          $result = mysqli_query($link, $sql);
 
          while($row = mysqli_fetch_assoc($result)) {

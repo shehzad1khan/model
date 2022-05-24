@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2022 at 11:14 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.1
+-- Generation Time: May 22, 2022 at 07:54 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -252,17 +252,19 @@ CREATE TABLE `users` (
   `id` int(100) NOT NULL,
   `name` varchar(200) NOT NULL,
   `username` varchar(200) NOT NULL,
-  `password` varchar(200) NOT NULL
+  `password` varchar(200) NOT NULL,
+  `image` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `username`, `password`) VALUES
-(3, 'admin', 'admin@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
-(13, 'Ali', 'ali@gmail.com', '86318e52f5ed4801abe1d13d509443de'),
-(14, 'khan', 'khan', '9e95f6d797987b7da0fb293a760fe57e');
+INSERT INTO `users` (`id`, `name`, `username`, `password`, `image`) VALUES
+(3, 'admin', 'admin@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', ''),
+(13, 'Ali', 'ali@gmail.com', '86318e52f5ed4801abe1d13d509443de', ''),
+(14, 'khan', 'khan', '9e95f6d797987b7da0fb293a760fe57e', ''),
+(15, 'Shehzad khan', 'shehzad', '4054b2941ba6f1168e8ce90e072b0e8d', 't4.jpg');
 
 --
 -- Indexes for dumped tables
@@ -319,7 +321,7 @@ ALTER TABLE `traders`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

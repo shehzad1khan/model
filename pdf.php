@@ -231,6 +231,8 @@ $dompdf->setPaper('A4', 'landscape');
 $dompdf->render();
 
 // Output the generated PDF to Browser
+ob_end_clean();
+
 $dompdf->stream("dompdf_out.pdf", array("Attachment" => false));
 exit(0);
 ?>
