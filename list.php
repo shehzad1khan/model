@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>List</title>
+    <title>Ecommerce-List</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <!-- DataTable -->
@@ -93,8 +93,18 @@
 
            <!---- Alert Record Inserted ---->
             <?php if (isset($_GET['record']) && $_GET['record'] == 'inserted') { ?>
-             <div class="alert alert-success alert-dismissible fade show col-12" role="alert">
+             <div class="alert text-center alert-success alert-dismissible fade show col-12" role="alert">
              <strong>Success!</strong> Record inserted successfully.
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+            </button>
+          </div> <?php } ?>
+
+          
+           <!---- Alert New File Added ---->
+           <?php if (isset($_GET['new']) && $_GET['new'] == 'file') { ?>
+             <div class="alert text-center alert-info alert-dismissible fade show col-12" role="alert">
+             <strong>Success!</strong> New File Added Successfully...!
              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
              <span aria-hidden="true">&times;</span>
             </button>
@@ -102,7 +112,7 @@
 
           <!---- Alert Record Updated ---->
       <?php if (isset($_GET['record']) && $_GET['record'] == 'updated') { ?>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="alert text-center alert-success alert-dismissible fade show" role="alert">
           <strong>Success!</strong> Record Updated successfully.
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -112,7 +122,7 @@
 
            <!---- Alert Record Deleted ---->
       <?php if (isset($_GET['record']) && $_GET['record'] == 'deleted') { ?>
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="alert text-center alert-danger alert-dismissible fade show" role="alert">
           <strong>Success!</strong> Record Deleted successfully.
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -245,12 +255,12 @@
                         <form action="insert.php" method="POST" enctype="multipart/form-data" >
                           <input type="hidden" name="trader_id" id="trader_id">
                           <input type="file" id="image" class="form-control" name="image[]" multiple required>
-                          <input type="submit" class="btn btn-success" name="file" value="Submit">                                   
-                      
+                          <input type="submit" class="mt-2 btn btn-success" name="file" value="Submit">                                   
+                          <button type="button" class="mt-2 btn btn-danger me-auto p2" data-bs-dismiss="modal" id="closebtn">Close</button>
                           <button type="button" class="btn btn-warning" data-bs-dismiss="modal" id="printBtn"><b>Print</b></button>        
                         </form>                      
                         </div>
-                        <button type="button" class="btn btn-danger me-auto p2" data-bs-dismiss="modal" id="closebtn">Close</button>
+                        
                       </div>
                     </div>
                   </div>
