@@ -192,8 +192,6 @@
       ******************************************************************* -->
                 <div class="row"> 
                     <div class="col-lg-3 col-sm-6">
-<<<<<<< HEAD
-=======
                         <div class="card gradient-8">
                             <div class="card-body">
                                 <h3 class="card-title text-white">Today Payment</h3>
@@ -230,7 +228,6 @@
                         </div>
                     </div> 
                     <div class="col-lg-3 col-sm-6">
->>>>>>> origin/main
                         <div class="card gradient-2">
                             <div class="card-body">
                                 <h3 class="card-title text-white">Whole Payment</h3>
@@ -337,12 +334,6 @@
                 type: "GET",
                 success: function(response) {
                     var data = JSON.parse(response);
-                    $('#today_pay').text(data.today_pay);
-                    $('#today_due').text(data.today_due);
-                    $('#week_pay').text(data.week_pay);
-                    $('#week_due').text(data.week_due);
-                    $('#month_pay').text(data.month_pay);
-                    $('#month_due').text(data.month_due);
                     $('#whole_pay').text(data.whole_pay);
                     $('#whole_due').text(data.whole_due);
                 }
