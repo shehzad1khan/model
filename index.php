@@ -330,12 +330,6 @@
                 type: "GET",
                 success: function(response) {
                     var data = JSON.parse(response);
-                    $('#today_pay').text(data.today_pay);
-                    $('#today_due').text(data.today_due);
-                    $('#week_pay').text(data.week_pay);
-                    $('#week_due').text(data.week_due);
-                    $('#month_pay').text(data.month_pay);
-                    $('#month_due').text(data.month_due);
                     $('#whole_pay').text(data.whole_pay);
                     $('#whole_due').text(data.whole_due);
                 }

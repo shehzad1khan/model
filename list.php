@@ -246,7 +246,7 @@
             </div>
         </div>
           <!-- -- Form Modal Ends Here-- -->       
-
+ 
             <!-- -- view modal start --  -->
             <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
                 <div class="modal-dialog">
@@ -268,7 +268,7 @@
                           <button type="button" class="btn btn-warning" data-bs-dismiss="modal" id="printBtn"><b>Print</b></button>        
                         </form>                      
                         </div>
-                        
+                         
                       </div>
                     </div>
                   </div>
