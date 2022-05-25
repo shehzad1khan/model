@@ -147,10 +147,7 @@ header('location:login.php');
     if(isset($_GET['detail']))
     {
       $data = [];
-<<<<<<< HEAD
-      // for current date
-=======
->>>>>>> origin/main
+
           // for WHOLE date
               $query = "SELECT sum(advance_payment) as whole_pay, sum(due_payment) as whole_due FROM traders";
                   $result = mysqli_query($link, $query);
