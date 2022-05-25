@@ -26,7 +26,8 @@
            
               if($query){
               
-              header("location:login.php?register=success");
+              // header("location:login.php?register=success");
+                echo "<script>window.open('login.php?register=success','_self')</script>";
               }
               else{
                echo '<div class="alert alert-danger text-center col-md-4 offset-5">Something went wrong</div>';

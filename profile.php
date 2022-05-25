@@ -1,16 +1,18 @@
-<?php include('database.php');
+<?php 
+if (!isset($_SESSION)) session_start();
+include('database.php');
 
 if(isset($_POST['change'])){
     $password = md5($_POST['password']);
     $cpassword = md5($_POST['cpassword']);
 
-    if($password == $cpassword){    
-        session_start();   
+    if($password == $cpassword){  
            $update = "UPDATE users SET password = '$password' WHERE id = ".$_SESSION['userid']."";
            $query = mysqli_query($link, $update);
            move_uploaded_file($_FILES['image']['tmp_name'], $target);
            
-               header("location:profile.php?password=updated");                     
+               // header("location:profile.php?password=updated");
+               echo "<script>window.open('profile.php?password=updated','_self')</script>";                     
            }
            else{
                echo '<div class="alert alert-danger text-center">New Password and Confirm Password are not matched.</div>';
@@ -27,12 +29,13 @@ if(isset($_POST['change'])){
     if($image == null || $image == ''){
         $image = $_POST['image2'];
      }
-     session_start();   
+        
      $update = "UPDATE users SET name = '$name', image = '$image' WHERE id = ".$_SESSION['userid']."";
      $query = mysqli_query($link, $update);
      move_uploaded_file($_FILES['image']['tmp_name'], $target);
      
-         header("location:profile.php?profile=updated");  
+         // header("location:profile.php?profile=updated");
+        echo "<script>window.open('profile.php?profile=updated','_self')</script>";
     
             }             
 ?>

@@ -17,11 +17,13 @@ include('database.php');
        $_SESSION['userid'] = $row['id'];
        $_SESSION['name'] = $row['name'];
        
-       header("location:index.php");
+       // header("location:index.php");
+       echo "<script>window.open('index.php','_self')</script>";
     }
     
    } else{
-     header("location:login.php?insert=unsuccessful");
+     // header("location:login.php?insert=unsuccessful");
+    echo "<script>window.open('login.php?insert=unsuccessful','_self')</script>";
    }
  
  }
@@ -180,7 +182,6 @@ button{
         <input type="password" placeholder="Password" id="password" name="password">
 
         <button type="submit" name="login">Log In</button>
-             <p>Don't have account? <a href="signup.php">Sign Up</a></p>
         <div class="row">
         <?php 
             if(isset($_GET['insert']) && $_GET['insert'] == 'unsuccessful'){ ?>   
