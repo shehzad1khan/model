@@ -418,14 +418,14 @@
         var id = e;
         $(this).hide();
         console.log($(this));
-        // $.ajax({
-        //     url: 'delete.php?file_id='+id,
-        //     type: "GET",
-        //     success: function(response) {
-        //     console.log(response);
+        $.ajax({
+            url: 'delete.php?file_id='+id,
+            type: "GET",
+            success: function(response) {
+            console.log(response);
 
-        //   }
-        // });
+          }
+        });
     }
 
 </script>

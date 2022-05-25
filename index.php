@@ -192,8 +192,6 @@
       ******************************************************************* -->
                 <div class="row"> 
                     <div class="col-lg-3 col-sm-6">
-<<<<<<< HEAD
-=======
                         <div class="card gradient-8">
                             <div class="card-body">
                                 <h3 class="card-title text-white">Today Payment</h3>
@@ -230,7 +228,6 @@
                         </div>
                     </div> 
                     <div class="col-lg-3 col-sm-6">
->>>>>>> origin/main
                         <div class="card gradient-2">
                             <div class="card-body">
                                 <h3 class="card-title text-white">Whole Payment</h3>
