@@ -18,6 +18,8 @@
     <!-- Custom Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
@@ -103,12 +105,20 @@
           
            <!---- Alert New File Added ---->
            <?php if (isset($_GET['new']) && $_GET['new'] == 'file') { ?>
-             <div class="alert text-center alert-info alert-dismissible fade show col-12" role="alert">
-             <strong>Success!</strong> New File Added Successfully...!
-             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-             <span aria-hidden="true">&times;</span>
-            </button>
-          </div> <?php } ?>
+            <div class="toast-container position-fixed bottom-0 end-0 p-3">
+              <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                  <img src="..." class="rounded me-2" alt="...">
+                  <strong class="me-auto">Bootstrap</strong>
+                  <small>11 mins ago</small>
+                  <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                  Hello, world! This is a toast message.
+                </div>
+              </div>
+            </div>
+          <?php } ?>
 
           <!---- Alert Record Updated ---->
       <?php if (isset($_GET['record']) && $_GET['record'] == 'updated') { ?>
@@ -134,8 +144,8 @@
 
                         <!-- -- Table Start here -- -->
                         <table id="example" class="table border border-gray table-responsive table-hover table-info" style="width:auto">
-                            <thead>
-                                <tr>
+                            <thead class="">
+                                <tr class="table-info">
                                     <th width="4%">Id</th>
                                     <th>Name</th>
                                     <th>Passport</th>
@@ -277,11 +287,7 @@
         <!--**********************************
             Footer start
         ***********************************-->
-        <div class="footer">
-            <div class="copyright">
-                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab"><b>Extreme Soft</b></a> 2018</p>
-            </div>
-        </div>
+        <?php include('include/footer.php') ?>
         <!--**********************************
             Footer end
         ***********************************-->
@@ -306,6 +312,8 @@
   <!-- ******* Scripts Start ******* -->
   <script>
    $(document).ready(function() {
+    $('#liveToast').toast('show');
+    
       $('#example').dataTable({
         "processing": true,
         ajax: {
