@@ -228,11 +228,15 @@
         <!--**********************************
             Footer start
         ***********************************-->
+<<<<<<< HEAD
         <div class="footer">
             <div class="copyright">
                 <p>Copyright &copy; Designed & Developed by <a href="#">Quixlab</a> 2018</p>
             </div>
         </div>
+=======
+           <?php include('include/footer.php') ?>
+>>>>>>> origin/main
         <!--**********************************
             Footer end
         ***********************************-->
