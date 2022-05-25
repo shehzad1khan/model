@@ -16,6 +16,7 @@ include('database.php');
        $_SESSION['username'] = $row['username'];
        $_SESSION['userid'] = $row['id'];
        $_SESSION['name'] = $row['name'];
+       $_SESSION['image'] = $row['image'];
        
        // header("location:index.php");
        echo "<script>window.open('index.php','_self')</script>";

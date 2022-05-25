@@ -32,8 +32,8 @@ header('location:login.php');
         $count = mysqli_num_rows($results);
         while($rows = mysqli_fetch_array($results))
         {
-            $html .='<tr><td colspan="2"><a href="db_images/'.$rows['file'].'" target="_blank">'.$rows['file'].'</a></td>
-            <td><a href="#" onclick="deleteAttachment('.$rows['id'].')"><i class="offset-9 bi bi-trash3-fill text-danger"></i></a></td></tr>';
+            $html .='<tr id="'.$rows['id'].'"><td colspan="2"><a href="db_images/'.$rows['file'].'" target="_blank">'.$rows['file'].'</a></td>
+            <td onclick="deleteAttachment('.$rows['id'].')"><a href="#" onclick="deleteAttachment('.$rows['id'].')"><i class="offset-9 bi bi-trash3-fill text-danger"></i></a></td></tr>';
         }
         echo $html;
       }

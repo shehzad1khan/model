@@ -415,8 +415,11 @@
     }
 
     function deleteAttachment(e) {
+     
         var id = e;
-        $(this).hide();
+        //$(this).hide();
+        console.log($(this).parent('tr'));//.hide();
+        $('#'+id).css('display','none');
         console.log($(this));
         $.ajax({
             url: 'delete.php?file_id='+id,
