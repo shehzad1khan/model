@@ -5,7 +5,6 @@ session_start();
 if(!isset($_SESSION['userid']))
 header('location:login.php');
 
-
     if(isset($_GET['id'])){
        $id = $_GET['id'];
        $query = "SELECT * FROM traders  WHERE id = '$id'";
@@ -20,7 +19,7 @@ header('location:login.php');
         $result = mysqli_query($link, $query);
         $row = mysqli_fetch_array($result);
         
-        $html ='<tr><th>Name:</th><td>'.$row['name'].'</td></tr><tr><th>Passport No:</th> <td>'.$row['passport_no'].'</td></tr><tr><th>Contact No:</th><td>'.$row['contact_no'].'</td></tr><tr><th>Email:</th><td>'.$row['email'].'</td></tr><tr> <th>Total Payment:</th><td>'.$row['total_payment'].'</td></tr><tr><th>Advance Payment:</th><td>'.$row['advance_payment'].'</td></tr><tr><th>Due Payment:</th> <td>'.$row['due_payment'].'</td><tr><th>Tracking Id:</th><td>'.$row['tracking_id'].'</td></tr></tr>';
+        $html ='<tr><th>Name:</th><td>'.$row['name'].'</td></tr><tr><th>Passport No:</th> <td>'.$row['passport_no'].'</td></tr><tr><th>Contact No:</th><td>'.$row['contact_no'].'</td></tr><tr> <th>Total Payment:</th><td>'.$row['total_payment'].'</td></tr><tr><th>Advance Payment:</th><td>'.$row['advance_payment'].'</td></tr><tr><th>Due Payment:</th> <td>'.$row['due_payment'].'</td><tr><th>Tracking Id:</th><td>'.$row['tracking_id'].'</td></tr></tr>';
         echo $html;
     }
 
@@ -34,7 +33,7 @@ header('location:login.php');
         while($rows = mysqli_fetch_array($results))
         {
             $html .='<tr><td colspan="2"><a href="db_images/'.$rows['file'].'" target="_blank">'.$rows['file'].'</a></td>
-            <td><a href="delete.php?file_id='.$rows['id'].'"><i class="offset-9 bi bi-trash3-fill text-danger"></i></a></td></tr>';
+            <td><a href="#" onclick="deleteAttachment('.$rows['id'].')"><i class="offset-9 bi bi-trash3-fill text-danger"></i></a></td></tr>';
         }
         echo $html;
       }
@@ -47,18 +46,18 @@ header('location:login.php');
       ORDER by id DESC";
       $result = mysqli_query($link, $query);
       $row = mysqli_fetch_assoc($result);
-      echo '<tr><th>Name:</th><td>'.$row['name'].'</td></tr><tr><th>Passport No:</th> <td>s</td></tr><tr><th>Contact No:</th><td>a</td></tr><tr><th>Email:</th><td>b</td></tr><tr> <th>Total Payment:</th><td>c</td></tr><tr><th>Advance Payment:</th><td>d</td></tr><tr><th>Due Payment:</th> <td>f</td><tr><th>Tracking Id:</th><td>g</td></tr></tr>';
+      echo '<tr><th>Name:</th><td>'.$row['name'].'</td></tr><tr><th>Passport No:</th> <td>s</td></tr><tr><th>Contact No:</th><td>a</td></tr><tr> <th>Total Payment:</th><td>c</td></tr><tr><th>Advance Payment:</th><td>d</td></tr><tr><th>Due Payment:</th> <td>f</td><tr><th>Tracking Id:</th><td>g</td></tr></tr>';
   }
 
     if(isset($_GET['view-list'])){
         // fetch records
          $sql = "SELECT * FROM `traders` ORDER BY `id` DESC";
          $result = mysqli_query($link, $sql);
-
+         $count = 1;
          while($row = mysqli_fetch_assoc($result)) {
             
             
-             // Update Button
+            // Update Button
             $updateButton = '<a href="#" data-id="'.$row['id'].'" class="edit-data"><i class="bi bi-pencil-square text-info"></i></a>';
             
             // Delete Button
@@ -67,11 +66,11 @@ header('location:login.php');
             // View Button
             $viewButton = '<a href="#" class="view-data" data-id="'.$row['id'].'"><i class="bi bi-eye-fill text-success"></i></a>';
             // attachment Button
-            $imageButton = '<a href="#" class="attachment-data" data-id="'.$row['id'].'"><i class="bi bi-images text-info"></i></a>';
+            $imageButton = '<a href="#" class="attachment-data" onclick="attachment('.$row['id'].')" data-id="'.$row['id'].'"><i class="bi bi-images text-info"></i></a>';
 
             $action = $updateButton." ".$deleteButton." ".$viewButton." ".$imageButton;
             $array[] = array(
-               "id" => $row['id'],
+               "id" => $count,
                "name" => $row['name'],
                "passport_no" => $row['passport_no'],
                "contact_no" => $row['contact_no'],
@@ -81,6 +80,7 @@ header('location:login.php');
                "tracking_id" => $row['tracking_id'],
                "action" => $action
              );
+            $count++;
          }
 
          $dataset = array(
@@ -95,22 +95,6 @@ header('location:login.php');
          echo json_encode($dataset);
     }
 
-   //  if(isset($_POST['report'])){
-   //       $fromdate = $_POST['from'];
-   //       $todate = $_POST['to'];
-   //       $fromdate=date_create($fromdate);
-   //       $fromdate=date_format($fromdate,"d-m-Y");
-        
-   //       $todate=date_create($todate);
-   //       $todate = date_format($todate,"d-m-Y");
-   //       $query = "SELECT * FROM traders WHERE date BETWEEN '" . $fromdate . "' AND  '" . $todate . "'
-   //       ORDER by id DESC";
-   //       $result = mysqli_query($link, $query);
-   //       while ($row = mysqli_fetch_array($result)){
-   //          echo "<tr><td>".$row['id']."</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>";
-
-   //       }
-   //  }
 
     if(isset($_POST['from'], $_POST['to']))
     {

@@ -11,13 +11,12 @@ include('database.php');
     $advance = mysqli_real_escape_string($link, $_POST['advance']);
     $due = mysqli_real_escape_string($link, $_POST['due']);
     $tracking = mysqli_real_escape_string($link, $_POST['tracking']);
-    $email = mysqli_real_escape_string($link, $_POST['email']);
 
     if($_POST['action'] == 'insert'){ 
         
         $user_id = $_SESSION['userid'];      
         $date = date('Y-m-d');
-        $insert = "INSERT INTO traders (name, passport_no, contact_no, total_payment, advance_payment, due_payment, tracking_id, email,date,user_id) VALUES ('$name', '$passport', '$contact', '$total', '$advance', '$due', '$tracking', '$email', '$date','$user_id')";
+        $insert = "INSERT INTO traders (name, passport_no, contact_no, total_payment, advance_payment, due_payment, tracking_id,date,user_id) VALUES ('$name', '$passport', '$contact', '$total', '$advance', '$due', '$tracking', '$date','$user_id')";
         $result2 = mysqli_query($link, $insert);
              
         $trader_id = mysqli_insert_id($link);
@@ -55,15 +54,18 @@ include('database.php');
             }
 
         if($result2){
-            header("location:list.php?record=inserted");
+            // header("location:list.php?record=inserted");
+            echo "<script>window.open('list.php?record=inserted','_self')</script>";
         }
     }
     elseif($_POST['action'] == 'update'){
         $id = $_POST['id'];
-        $update = "UPDATE traders SET name = '$name', passport_no = '$passport', contact_no = '$contact', total_payment = '$total', advance_payment = '$advance', due_payment = '$due', tracking_id = '$tracking', email = '$email', image = '$img' WHERE id = '$id'";
+        $update = "UPDATE traders SET name = '$name', passport_no = '$passport', contact_no = '$contact', total_payment = '$total', advance_payment = '$advance', due_payment = '$due', tracking_id = '$tracking' WHERE id = '$id'";
         $result = mysqli_query($link, $update);
         if($result){
-            header("location:list.php?record=updated");
+            // header("location:list.php?record=updated");
+
+            echo "<script>window.open('list.php?record=updated','_self')</script>";
         }
     }
 
@@ -104,7 +106,8 @@ if(isset($_POST['file']))
         $statusMsg = "Upload failed! ".$errorMsg; 
     }
     if($result){
-        header("location:list.php?new=file");
+        // header("location:list.php?new=file");
+            echo "<script>window.open('list.php?new=file','_self')</script>";
     }
 }
 

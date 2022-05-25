@@ -1,4 +1,5 @@
 <?php
+ob_start();
 // include autoloader
 require_once 'dompdf/autoload.inc.php';
 

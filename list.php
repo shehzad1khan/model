@@ -210,10 +210,6 @@
                         <label for="contact" class="col-form-label">Contact No:</label>
                         <input type="text" class="form-control" id="contact" name="contact" >
                       </div>
-                      <div class="col">
-                        <label for="email" class="col-form-label">Email:</label>
-                        <input type="email" id="email" class="form-control" name="email">
-                      </div>
                     </div>
                     <div class="form-row">
                       <div class="col">
@@ -315,6 +311,7 @@
     $('#liveToast').toast('show');
     
       $('#example').dataTable({
+        // order: [[0, 'desc']],
         "processing": true,
         ajax: {
         url: "fetch.php?view-list=1",
@@ -341,29 +338,11 @@
           url: 'fetch.php?view-id='+id,
           type: "GET",
           success: function(response) {
-            console.log(response);
             $('#table').html(response);
             $('#exampleModal2').modal('show');
             $('.file-form').hide(); 
             $('#printBtn').show();
             $('#closebtn').show();
-          }
-        });                
-      });
-
-      // view Modal fucntion start
-      $("#example").delegate(".attachment-data", "click", function(){
-        var id = $(this).data("id");
-        $.ajax({
-          url: 'fetch.php?attachment='+id,
-          type: "GET",
-          success: function(response) {
-            console.log(response);
-            $('#table').html(response);
-            $('.file-form').show();
-            $('#trader_id').val(id);
-            $('#exampleModal2').modal('show');
-            $('#printBtn').hide();
           }
         });                
       });
@@ -379,7 +358,6 @@
           },
           dataType: "json",
           success: function(data) {
-            console.log(data);
             $('#exampleModal').modal('show');
             $('#id').val(data.id);
             $('#name').val(data.name);
@@ -420,6 +398,34 @@
       var advance = $('#advance').val();
       var due = total - advance;
       $('#due').val(due);
+    }
+    function attachment(e) {
+        var id = e;
+        $.ajax({
+            url: 'fetch.php?attachment='+id,
+            type: "GET",
+            success: function(response) {
+            $('#table').html(response);
+            $('.file-form').show();
+            $('#trader_id').val(id);
+            $('#exampleModal2').modal('show');
+            $('#printBtn').hide();
+          }
+        });
+    }
+
+    function deleteAttachment(e) {
+        var id = e;
+        $(this).hide();
+        console.log($(this));
+        // $.ajax({
+        //     url: 'delete.php?file_id='+id,
+        //     type: "GET",
+        //     success: function(response) {
+        //     console.log(response);
+
+        //   }
+        // });
     }
 
 </script>
