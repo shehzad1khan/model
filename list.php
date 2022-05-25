@@ -236,7 +236,7 @@
             </div>
         </div>
           <!-- -- Form Modal Ends Here-- -->       
-
+ 
             <!-- -- view modal start --  -->
             <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
                 <div class="modal-dialog">
