@@ -258,7 +258,7 @@
                           <button type="button" class="btn btn-warning" data-bs-dismiss="modal" id="printBtn"><b>Print</b></button>        
                         </form>                      
                         </div>
-                        
+                         
                       </div>
                     </div>
                   </div>
