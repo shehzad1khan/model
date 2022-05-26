@@ -1,14 +1,15 @@
 <?php
 ob_start();
-// include autoloader
-require_once 'dompdf/autoload.inc.php';
 
 // reference the Dompdf namespace
 use Dompdf\Dompdf;
 
+// include autoloader
+require_once 'dompdf/autoload.inc.php';
+
 // instantiate and use the dompdf class
 $dompdf = new Dompdf();
-$abc="This is the php text";
+
 $html = "<!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -177,7 +178,20 @@ $html = "<!DOCTYPE html>
         .party {
         border: #ccc 1px solid;
         }
-
+        img{
+            width: 200px;
+            height: auto;          
+        }
+        ul{
+            margin: 0;
+        }
+        ul li{
+            display: inline-block;
+        }
+        ul .img-li{
+            margin-left: 320px;
+            margin-bottom: 20px;
+        }
 
     </style>
 
@@ -185,7 +199,10 @@ $html = "<!DOCTYPE html>
 <body>   
     <div class='row'>
         <div class='col-md-12'>   
-            <h1>E-Commerce Business Trader</h1> 
+            <ul>              
+              <li><h1>E-Commerce Business Trader</h1></li>
+              <li class='img-li'><img src='images/paypal.png'></li> 
+            </ul>
             <table  class='plist' border='1' cellpadding='0' cellspacing='0'>
                 <tr class='heading'>
                     <th>S.No</th>
@@ -232,8 +249,7 @@ $dompdf->setPaper('A4', 'landscape');
 $dompdf->render();
 
 // Output the generated PDF to Browser
-ob_end_clean();
-
 $dompdf->stream("dompdf_out.pdf", array("Attachment" => false));
+
 exit(0);
 ?>
