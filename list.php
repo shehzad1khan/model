@@ -419,7 +419,7 @@
         var id = e;   
 
         //$(this).hide();
-        console.log($(this).parent('tr'));//.hide();
+        console.log($(this).parent('tr'));
         $('#'+id).css('display','none');
         console.log($(this));
         $.ajax({
