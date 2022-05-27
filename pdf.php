@@ -1,13 +1,13 @@
 <?php
 ob_start();
 // include autoloader
-require_once 'dompdf/autoload.inc.php';
 
-// reference the Dompdf namespace
 use Dompdf\Dompdf;
 
-// instantiate and use the dompdf class
+require_once 'dompdf/autoload.inc.php';
+
 $dompdf = new Dompdf();
+
 $abc="This is the php text";
 $html = "<!DOCTYPE html>
 <html lang='en'>
@@ -177,6 +177,11 @@ $html = "<!DOCTYPE html>
         .party {
         border: #ccc 1px solid;
         }
+        .img {
+            width: 50%;
+            height: 50%;
+            margin-left: 815px;
+        }
 
 
     </style>
@@ -184,9 +189,11 @@ $html = "<!DOCTYPE html>
 </head>
 <body>   
     <div class='row'>
-        <div class='col-md-12'>   
-            <h1>E-Commerce Business Trader</h1> 
-            <table  class='plist' border='1' cellpadding='0' cellspacing='0'>
+        < class='col-md-12'>   
+            <h1>E-Commerce Business Trader</h1>";
+            $html .= "<img width='220' height='220' src='test.jpg'>";
+
+           $html .=" <table  class='plist' border='1' cellpadding='0' cellspacing='0'>
                 <tr class='heading'>
                     <th>S.No</th>
                     <th>Name</th>
@@ -223,7 +230,8 @@ $html .="</table>
 </body>
 </html>";
 
-$dompdf->loadHtml($html);
+ $dompdf->loadHtml($html);
+
 
 // (Optional) Setup the paper size and orientation
 $dompdf->setPaper('A4', 'landscape');
@@ -235,5 +243,6 @@ $dompdf->render();
 ob_end_clean();
 
 $dompdf->stream("dompdf_out.pdf", array("Attachment" => false));
+
 exit(0);
 ?>

@@ -15,17 +15,25 @@ include('database.php');
 
  if(isset($_GET['file_id'])){
     $id = $_GET['file_id'];
-
-
     
-    $sql = "DELETE FROM files WHERE id = '$id'";
+    $sql = "SELECT * FROM files WHERE id = '$id'";
     $query = mysqli_query($link, $sql) or die(mysqli_error($link));
     if($query){
-      echo "Successfully Deleted!";
+      $row = mysqli_fetch_array($query);
+      $file_to_delete = 'db_images/'.$row['file'];
+  
+      unlink($file_to_delete);
+      $sql = "DELETE FROM files WHERE id = '$id'";
+      $query = mysqli_query($link, $sql) or die(mysqli_error($link));
+      if($query){
+      }
     }
     else
     {
       echo "Some Error!";
     }
+
+    
+    
  }
 ?>

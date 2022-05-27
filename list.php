@@ -103,9 +103,9 @@
           </div> <?php } ?>
 
           
-           <!---- Alert New File Added ---->
-           <?php if (isset($_GET['new']) && $_GET['new'] == 'file') { ?>
-            <div class="toast-container position-fixed bottom-0 end-0 p-3">
+           <!-- -- Alert New File Added --
+           <?php if (isset($_GET['new']) && $_GET['new'] == 'file') { ?> -->
+            <!-- <div class="toast-container position-fixed bottom-0 end-0 p-3">
               <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
                   <img src="..." class="rounded me-2" alt="...">
@@ -117,8 +117,8 @@
                   Hello, world! This is a toast message.
                 </div>
               </div>
-            </div>
-          <?php } ?>
+            </div> -->
+          <!-- <?php } ?> --> 
 
           <!---- Alert Record Updated ---->
       <?php if (isset($_GET['record']) && $_GET['record'] == 'updated') { ?>
@@ -416,16 +416,17 @@
 
     function deleteAttachment(e) {
      
-        var id = e;
+        var id = e;   
+
         //$(this).hide();
         console.log($(this).parent('tr'));//.hide();
         $('#'+id).css('display','none');
         console.log($(this));
         $.ajax({
             url: 'delete.php?file_id='+id,
-            type: "GET",
+            type: "GET",           
             success: function(response) {
-            console.log(response);
+            console.log(response);            
 
           }
         });
