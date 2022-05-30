@@ -45,8 +45,8 @@ include('database.php');
      </style>
      <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-<!-- Bootstrap Icon online link -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+<!-- Fontawsome Icon offline link -->
+<link href="./icons/font-awesome/css/font-awesome.min.css" rel="stylesheet"> 
 
 </head>
 <body>
@@ -66,7 +66,7 @@ include('database.php');
               <form action="" method="POST">
 
                   <div class="d-flex align-items-center mb-3 pb-1">
-                  <h1><i class="bi bi-fingerprint" style="color:#cc6600 ;"></i></h1>
+                  <p><i class="fa fa-unlock-alt" style="color:#cc6600; font-size:70px" aria-hidden="true"></i></p>  
                     <span class="h1 fw-bold mb-0 ms-3">Ecommerce</span>
                   </div>
 

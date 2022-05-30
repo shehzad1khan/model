@@ -55,7 +55,8 @@ include('database.php');
             }
 
         if($result2){
-            header("location:list.php?record=inserted");
+            // header("location:list.php?record=inserted");
+            echo "<script>window.open('list.php?record=inserted','_self')</script>";
         }
     }
     elseif($_POST['action'] == 'update'){
@@ -63,10 +64,52 @@ include('database.php');
         $update = "UPDATE traders SET name = '$name', passport_no = '$passport', contact_no = '$contact', total_payment = '$total', advance_payment = '$advance', due_payment = '$due', tracking_id = '$tracking', email = '$email', image = '$img' WHERE id = '$id'";
         $result = mysqli_query($link, $update);
         if($result){
-            header("location:list.php?record=updated");
+            // header("location:list.php?record=updated");
+
+            echo "<script>window.open('list.php?record=updated','_self')</script>";
         }
     }
 
+}
+
+if(isset($_POST['file']))
+{
+    $trader_id = $_POST['trader_id'];
+    // File upload configuration 
+    $targetDir = "db_images/"; 
+    $allowTypes = array('jpg','png','jpeg','gif'); 
+        
+    $statusMsg = $errorMsg = $insertValuesSQL = $errorUpload = $errorUploadType = ''; 
+    $fileNames = array_filter($_FILES['image']['name']); 
+    if(!empty($fileNames)){ 
+        foreach($_FILES['image']['name'] as $key=>$val){ 
+            // File upload path 
+            $fileName = basename($_FILES['image']['name'][$key]); 
+            $targetFilePath = $targetDir . $fileName; 
+                
+            // Check whether file type is valid 
+            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                // Upload file to server 
+                if(move_uploaded_file($_FILES["image"]["tmp_name"][$key], $targetFilePath)){ 
+                    // Image db insert sql 
+                    $insertValuesSQL .= "('".$fileName."', '".$trader_id."'),"; 
+                }else{ 
+                    $errorUpload .= $_FILES['image']['name'][$key].' | '; 
+                } 
+        }  
+    }
+    if(!empty($insertValuesSQL)){ 
+        $insertValuesSQL = trim($insertValuesSQL, ','); 
+        // Insert image file name into database 
+        $insert = "INSERT INTO `files`(`file`, `trader_id`)  VALUES $insertValuesSQL";
+        $result = mysqli_query($link, $insert); 
+    }else{ 
+        $statusMsg = "Upload failed! ".$errorMsg; 
+    }
+    if($result){
+        // header("location:list.php?new=file");
+            echo "<script>window.open('list.php?new=file','_self')</script>";
+    }
 }
 
 ?>
