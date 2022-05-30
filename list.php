@@ -116,7 +116,7 @@
 
            <!---- Alert Record Deleted ---->
       <?php if (isset($_GET['record']) && $_GET['record'] == 'deleted') { 
-        echo '<script type="text/javascript">toastr.danger("File deleted successfully...")</script>';
+        echo '<script type="text/javascript">toastr.warning("File deleted successfully...")</script>';
        } ?>
                     <button class="btn btn-sm btn-success add">Add</button>
                         <!-- -- Table Start here -- -->
