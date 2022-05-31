@@ -99,9 +99,14 @@
 
                 
            <!---- Alert Record Inserted ---->
-            <?php if (isset($_GET['record']) && $_GET['record'] == 'inserted') { 
-                echo '<script type="text/javascript">toastr.success("File inserted successfuly...")</script>';
-             } ?>
+           <?php 
+            if(isset($_SESSION['flash_message']) && isset($_SESSION['flash_message_type'])) {
+              $message = $_SESSION['flash_message'];
+              $type = $_SESSION['flash_message_type'];
+              unset($_SESSION['flash_message']);
+              echo '<script type="text/javascript">toastr.'.$type.'("'.$message.'")</script>';
+            }
+           ?>
 
           
            <!-- -- Alert New File Added -->
