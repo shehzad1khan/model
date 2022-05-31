@@ -209,7 +209,6 @@ $html = "<!DOCTYPE html>
                     <th>Passport</th>
                     <th>Contact No</th>
                     <th>Tracking Id</th>
-                    <th>Email</th>
                     <th>Amount</th>
                     <th>Advance Pay</th>
                     <th>Due Pay</th>
@@ -226,7 +225,6 @@ $html.="<tr>
             <td>".$row['passport_no']."</td>
             <td>".$row['contact_no']."</td>
             <td>".$row['tracking_id']."</td>
-            <td>".$row['email']."</td>
             <td>".$row['total_payment']."</td>
             <td>".$row['advance_payment']."</td>
             <td>".$row['due_payment']."</td>

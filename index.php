@@ -109,7 +109,6 @@
                                     }
                                     ?>
 
-                                    <p class="text-white mb-0">Jan - March 2019</p>
                                 </div>
                                 <span class="float-right display-5 opacity-5"><i class="bi bi-pie-chart-fill"></i></span>
                             </div>
@@ -133,7 +132,6 @@
                                     }
                                     ?>
 
-                                    <p class="text-white mb-0">Jan - March 2019</p>
                                 </div>
                                 <span class="float-right display-5 opacity-5"><i class="bi bi-book"></i></span>
                             </div>
@@ -157,7 +155,6 @@
                                     }
                                     ?>
 
-                                    <p class="text-white mb-0">Jan - March 2019</p>
                                 </div>
                                 <span class="float-right display-5 opacity-5"><i class="bi bi-ui-checks-grid"></i></span>
                             </div>
@@ -181,7 +178,6 @@
                                     }
                                     ?>
 
-                                    <p class="text-white mb-0">Jan - March 2019</p>
                                 </div>
                                 <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>
                             </div>
@@ -197,7 +193,6 @@
                                 <h3 class="card-title text-white">Whole Payment</h3>
                                 <div class="d-inline-block">
                                     <h2 class="text-white mb-0" id="whole_pay">0</h2>
-                                    <p class="text-white mb-0">Jan - March 2019</p>
                                 </div>
                                 <span class="float-right display-5 opacity-5"><i class="bi bi-pie-chart-fill"></i></span>
                             </div>
@@ -209,7 +204,6 @@
                                 <h3 class="card-title text-white">Whole Due</h3>
                                 <div class="d-inline-block">
                                     <h2 class="text-white mb-0" id="whole_due">0</h2>
-                                    <p class="text-white mb-0">Jan - March 2019</p>
                                 </div>
                                 <span class="float-right display-5 opacity-5"><i class="bi bi-pie-chart-fill"></i></span>
                             </div>
