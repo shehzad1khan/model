@@ -34,7 +34,7 @@ header('location:login.php');
         {
           $path = 'db_images/'.$rows['file'];
             $html .='<tr id="'.$rows['id'].'"><td colspan="2"><a href="db_images/'.$rows['file'].'" target="_blank">'.$rows['file'].'</a></td>
-            <td><a href="#" onclick="deleteAttachment('.$rows['id'].')" file="'.$rows['file'].'"><i class="offset-9 bi bi-trash3-fill text-danger"></i></a></td></tr>';
+            <td><a href="#" onclick="deleteAttachment('.$rows['id'].')" file="'.$rows['file'].'"><i class="text-danger fa fa-trash offset-8"></i></a></td></tr>';
         }
         echo $html;
       }
@@ -59,15 +59,15 @@ header('location:login.php');
             
             
             // Update Button
-            $updateButton = '<a href="#" data-id="'.$row['id'].'" class="edit-data"><i class="bi bi-pencil-square text-info"></i></a>';
+            $updateButton = '<a href="#" data-id="'.$row['id'].'" class="edit-data"><i class="text-info fa fa-pencil-square-o" aria-hidden="true"></i></a>';
             
             // Delete Button
-            $deleteButton = '<a href="delete.php? id='.$row['id'].'" data-id="'.$row['id'].'"><i class="bi bi-trash3-fill text-danger"></i></a>';
+            $deleteButton = '<a href="delete.php? id='.$row['id'].'" data-id="'.$row['id'].'"><i class="text-danger fa fa-trash" aria-hidden="true"></i></a>';
 
             // View Button
-            $viewButton = '<a href="#" class="view-data" data-id="'.$row['id'].'"><i class="bi bi-eye-fill text-success"></i></a>';
+            $viewButton = '<a href="#" class="view-data" data-id="'.$row['id'].'"><i class="text-success fa fa-eye" aria-hidden="true"></i></a>';
             // attachment Button
-            $imageButton = '<a href="#" class="attachment-data" onclick="attachment('.$row['id'].')" data-id="'.$row['id'].'"><i class="bi bi-images text-info"></i></a>';
+            $imageButton = '<a href="#" class="attachment-data" onclick="attachment('.$row['id'].')" data-id="'.$row['id'].'"><i class="text-info fa fa-picture-o" aria-hidden="true"></i></a>';
 
             $action = $updateButton." ".$deleteButton." ".$viewButton." ".$imageButton;
             $array[] = array(

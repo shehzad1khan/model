@@ -19,11 +19,9 @@
     <link rel="stylesheet" href="./plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
     <!-- Custom Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-   
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">    
-
-
+    <!-- font awesome offline links -->
+    <link href="./icons/font-awesome/css/font-awesome.min.css" rel="stylesheet"> 
+    
 </head>
 
 <body>

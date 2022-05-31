@@ -49,8 +49,7 @@ if(isset($_POST['change'])){
     <title>Ecommerce-Profile</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom Stylesheet -->
+    <!-- Custom Stylesheet -->  
     <link href="css/style.css" rel="stylesheet">
 
 </head>

@@ -16,12 +16,17 @@
 
     <link rel="stylesheet" href="./plugins/datatables/jquery.dataTables.min.css">
     <!-- Custom Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet"> 
+      <!-- Toaster CSS -->
+      <link href="./plugins/toastr/css/toastr.min.css" rel="stylesheet">
+      <!-- font awesome offline links -->
+     <link href="./icons/font-awesome/css/font-awesome.min.css" rel="stylesheet"> 
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
 </head>
 
@@ -94,54 +99,26 @@
 
                 
            <!---- Alert Record Inserted ---->
-            <?php if (isset($_GET['record']) && $_GET['record'] == 'inserted') { ?>
-             <div class="alert text-center alert-success alert-dismissible fade show col-12" role="alert">
-             <strong>Success!</strong> Record inserted successfully.
-             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-             <span aria-hidden="true">&times;</span>
-            </button>
-          </div> <?php } ?>
+            <?php if (isset($_GET['record']) && $_GET['record'] == 'inserted') { 
+                echo '<script type="text/javascript">toastr.success("File inserted successfuly...")</script>';
+             } ?>
 
           
-           <!-- -- Alert New File Added --
-           <?php if (isset($_GET['new']) && $_GET['new'] == 'file') { ?> -->
-            <!-- <div class="toast-container position-fixed bottom-0 end-0 p-3">
-              <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header">
-                  <img src="..." class="rounded me-2" alt="...">
-                  <strong class="me-auto">Bootstrap</strong>
-                  <small>11 mins ago</small>
-                  <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                  Hello, world! This is a toast message.
-                </div>
-              </div>
-            </div> -->
-          <!-- <?php } ?> --> 
+           <!-- -- Alert New File Added -->
+           <?php if (isset($_GET['new']) && $_GET['new'] == 'file') { 
+          echo '<script type="text/javascript">toastr.success("New file added...")</script>';
+           } ?> 
 
           <!---- Alert Record Updated ---->
-      <?php if (isset($_GET['record']) && $_GET['record'] == 'updated') { ?>
-        <div class="alert text-center alert-success alert-dismissible fade show" role="alert">
-          <strong>Success!</strong> Record Updated successfully.
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-      <?php } ?>
+      <?php if (isset($_GET['record']) && $_GET['record'] == 'updated') { 
+        echo '<script type="text/javascript">toastr.info("File updated successfully...")</script>';
+          } ?>
 
            <!---- Alert Record Deleted ---->
-      <?php if (isset($_GET['record']) && $_GET['record'] == 'deleted') { ?>
-        <div class="alert text-center alert-danger alert-dismissible fade show" role="alert">
-          <strong>Success!</strong> Record Deleted successfully.
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-      <?php } ?>
+      <?php if (isset($_GET['record']) && $_GET['record'] == 'deleted') { 
+        echo '<script type="text/javascript">toastr.warning("File deleted successfully...")</script>';
+       } ?>
                     <button class="btn btn-sm btn-success add">Add</button>
-                  
-
                         <!-- -- Table Start here -- -->
                         <table id="example" class="table border border-gray table-responsive table-hover table-info" style="width:auto">
                             <thead class="">
@@ -303,8 +280,11 @@
     <script src="js/settings.js"></script>
     <script src="js/gleek.js"></script>
     <script src="./js/dashboard/dashboard-1.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/bootsrap-icons/icons-5.1.3.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!-- Toastr -->
+  <script src="./plugins/toastr/js/toastr.min.js"></script>
+    <script src="./plugins/toastr/js/toastr.init.js"></script>
   <!-- ******* Scripts Start ******* -->
   <script>
    $(document).ready(function() {
@@ -388,9 +368,9 @@
       }); 
       
       
-      $("#toastr-success-top-right").on("click",function(){toastr.success("This Is Success Message","Top Right",{timeOut:5e3,closeButton:!0,debug:!1,newestOnTop:!0,progressBar:!0,positionClass:"toast-top-right",preventDuplicates:!0,onclick:null,showDuration:"300",hideDuration:"1000",extendedTimeOut:"1000",showEasing:"swing",hideEasing:"linear",showMethod:"fadeIn",hideMethod:"fadeOut",tapToDismiss:!1})});
+      $("#toastr-success-top-right").trigger(function(){toastr.success("This Is Success Message","Top Right",{timeOut:5e3,closeButton:!0,debug:!1,newestOnTop:!0,progressBar:!0,positionClass:"toast-top-right",preventDuplicates:!0,onclick:null,showDuration:"300",hideDuration:"1000",extendedTimeOut:"1000",showEasing:"swing",hideEasing:"linear",showMethod:"fadeIn",hideMethod:"fadeOut",tapToDismiss:!1})});
 
-
+      
     });
     function cal(){
       
