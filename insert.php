@@ -1,6 +1,9 @@
 <?php 
-session_start();
 include('database.php');
+
+session_start();
+if(!isset($_SESSION['userid']))
+header('location:login.php?session=unset');
 
  if(isset($_POST['action'])){
   
@@ -56,18 +59,18 @@ include('database.php');
         if($result2){
             // header("location:list.php?record=inserted");
             $_SESSION['flash_message'] = "File inserted successfuly...";
-            $_SESSION['flash_message_type'] = "info";
+            $_SESSION['flash_message_type'] = "success";
             echo "<script>window.open('list.php','_self')</script>";
         }
     }
     elseif($_POST['action'] == 'update'){
         $id = $_POST['id'];
-        $update = "UPDATE traders SET name = '$name', passport_no = '$passport', contact_no = '$contact', total_payment = '$total', advance_payment = '$advance', due_payment = '$due', tracking_id = '$tracking', image = '$img' WHERE id = '$id'";
+        $update = "UPDATE traders SET name = '$name', passport_no = '$passport', contact_no = '$contact', total_payment = '$total', advance_payment = '$advance', due_payment = '$due', tracking_id = '$tracking' WHERE id = '$id'";
         $result = mysqli_query($link, $update);
         if($result){
-            // header("location:list.php?record=updated");
-
-            echo "<script>window.open('list.php?record=updated','_self')</script>";
+            $_SESSION['flash_message'] = "File Updated successfuly...";
+            $_SESSION['flash_message_type'] = "info";
+            echo "<script>window.open('list.php','_self')</script>";
         }
     }
 
@@ -108,8 +111,9 @@ if(isset($_POST['file']))
         $statusMsg = "Upload failed! ".$errorMsg; 
     }
     if($result){
-        // header("location:list.php?new=file");
-            echo "<script>window.open('list.php?new=file','_self')</script>";
+            $_SESSION['flash_message'] = "New file added successfuly...";
+            $_SESSION['flash_message_type'] = "success";
+            echo "<script>window.open('list.php','_self')</script>";
     }
 }
 

@@ -43,10 +43,15 @@ include('database.php');
                color: #fff;
           }
      </style>
-     <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-<!-- Fontawsome Icon offline link -->
-<link href="./icons/font-awesome/css/font-awesome.min.css" rel="stylesheet"> 
+
+        <!-- CSS only -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+      <!-- Fontawsome Icon offline link -->
+      <link href="./icons/font-awesome/css/font-awesome.min.css" rel="stylesheet"> 
+
+      <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
 </head>
 <body>
@@ -83,31 +88,15 @@ include('database.php');
                   </div>
 
                   <div class="pt-1 d-grid gap-2 mb-4">
-                    <input type="submit" class="btn btn-dark btn-lg btn-block"  name="login" value="Submit">
+                    <input type="submit" class="btn btn-dark btn-lg btn-block"  name="login" value="Login">
                   </div>
 
                   <!-- **********-Alerts Row-********* -->
-                  <div class="row">
-                        <?php 
-                          if(isset($_GET['insert']) && $_GET['insert'] == 'unsuccessful'){ ?>
-                          <strong class="alert alert-danger text-center">Invalid Username or Password</strong>
-                          <?php } 
-                        ?>
-
-                        <?php 
-                          if(isset($_GET['session']) && $_GET['session'] == 'unset'){ ?>
-                          <strong class="alert alert-danger text-center">Session Unset</strong>
-                          <?php } 
-                        ?>
-
-                        <?php 
-                          if(isset($_GET['register']) && $_GET['register'] == 'success'){ ?>
-                          <span class="alert alert-success text-center">Registered Successfully</span>
-                          <?php } 
-                        ?>
+                  <div class="row">                       
                   </div>
+                  <p class="mb-5 pb-lg-2" style="color: #fff;">Don't have an account? <a href="signup.php" class="text-danger">Click here</a>
+
                   <!-- <a class="small text-white" href="#!">Forgot password?</a>
-                  <p class="mb-5 pb-lg-2" style="color: #fff;">Don't have an account? <a href="signup.php"
                       style="color: #393f81;">Register here</a></p> -->
                 </form>
 
@@ -119,6 +108,23 @@ include('database.php');
     </div>
   </div>
 </section>
+
+   <!-- ************-Alert Section-********* -->
+<?php 
+    if(isset($_GET['insert']) && $_GET['insert'] == 'unsuccessful'){ ?>
+    echo '<script type="text/javascript">toastr.error("Invalid Username Or Password")</script>';
+    <?php } 
+  ?>
+  <?php 
+    if(isset($_GET['session']) && $_GET['session'] == 'unset'){ ?>
+    echo '<script type="text/javascript">toastr.error("Session Unset")</script>';
+    <?php } 
+  ?>
+  <?php 
+    if(isset($_GET['register']) && $_GET['register'] == 'success'){ ?>
+    echo '<script type="text/javascript">toastr.success("Registerd Successfully")</script>';
+    <?php } 
+  ?>
            
 
 <!-- JavaScript Bundle with Popper -->

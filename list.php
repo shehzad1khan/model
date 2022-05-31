@@ -22,11 +22,18 @@
       <!-- font awesome offline links -->
      <link href="./icons/font-awesome/css/font-awesome.min.css" rel="stylesheet"> 
 
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link  href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
 
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+    <!-- toaster js and css -->
+    <script src="plugins/online-toastr/jquery.min.js"></script>
+    <link href="plugins/online-toastr/toastr.css" rel="stylesheet"/>
+    <script src="plugins/online-toastr/toastr.js"></script>
+
+    <style>
+      input[type=search] {
+        border: 2px solid #ccc;
+      }
+    </style>
 
 </head>
 
@@ -106,23 +113,7 @@
               unset($_SESSION['flash_message']);
               echo '<script type="text/javascript">toastr.'.$type.'("'.$message.'")</script>';
             }
-           ?>
-
-          
-           <!-- -- Alert New File Added -->
-           <?php if (isset($_GET['new']) && $_GET['new'] == 'file') { 
-          echo '<script type="text/javascript">toastr.success("New file added...")</script>';
-           } ?> 
-
-          <!---- Alert Record Updated ---->
-      <?php if (isset($_GET['record']) && $_GET['record'] == 'updated') { 
-        echo '<script type="text/javascript">toastr.info("File updated successfully...")</script>';
-          } ?>
-
-           <!---- Alert Record Deleted ---->
-      <?php if (isset($_GET['record']) && $_GET['record'] == 'deleted') { 
-        echo '<script type="text/javascript">toastr.warning("File deleted successfully...")</script>';
-       } ?>
+           ?>           
                     <button class="btn btn-sm btn-success add">Add</button>
                         <!-- -- Table Start here -- -->
                         <table id="example" class="table border border-gray table-responsive table-hover table-info" style="width:auto">
@@ -373,9 +364,6 @@
       }); 
       
       
-      $("#toastr-success-top-right").trigger(function(){toastr.success("This Is Success Message","Top Right",{timeOut:5e3,closeButton:!0,debug:!1,newestOnTop:!0,progressBar:!0,positionClass:"toast-top-right",preventDuplicates:!0,onclick:null,showDuration:"300",hideDuration:"1000",extendedTimeOut:"1000",showEasing:"swing",hideEasing:"linear",showMethod:"fadeIn",hideMethod:"fadeOut",tapToDismiss:!1})});
-
-      
     });
     function cal(){
       
@@ -411,7 +399,7 @@
             url: 'delete.php?file_id='+id,
             type: "GET",           
             success: function(response) {
-            console.log(response);            
+              toastr.error("File Deleted Successfully");          
 
           }
         });
