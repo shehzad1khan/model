@@ -284,10 +284,8 @@
   <!-- ******* Scripts Start ******* -->
   <script>
    $(document).ready(function() {
-    $('#liveToast').toast('show');
     
       $('#example').dataTable({
-        // order: [[0, 'desc']],
         "processing": true,
         ajax: {
         url: "fetch.php?view-list=1",
@@ -388,11 +386,9 @@
     }
 
     function deleteAttachment(e) {
-     
-        var id = e;   
-
-        //$(this).hide();
-        console.log($(this).parent('tr'));
+     if(confirm("Are you sure you want to delete this?")){
+        var id = e;       
+        // console.log($(this).parent('tr'));
         $('#'+id).css('display','none');
         console.log($(this));
         $.ajax({
@@ -403,6 +399,7 @@
 
           }
         });
+      }
     }
 
 </script>
