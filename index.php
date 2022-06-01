@@ -108,7 +108,7 @@
                                     ?>
 
                                 </div>
-                                <span class="float-right display-5 opacity-5"><i class="bi bi-pie-chart-fill"></i></span>
+                                <span class="float-right display-5 opacity-5"><i class="fa fa-calculator"></i></span>
                             </div>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                                     ?>
 
                                 </div>
-                                <span class="float-right display-5 opacity-5"><i class="bi bi-book"></i></span>
+                                <span class="float-right display-5 opacity-5"><i class="fa fa-book"></i></span>
                             </div>
                         </div>
                     </div>
@@ -154,7 +154,7 @@
                                     ?>
 
                                 </div>
-                                <span class="float-right display-5 opacity-5"><i class="bi bi-ui-checks-grid"></i></span>
+                                <span class="float-right display-5 opacity-5"><i class="fa fa-address-book"></i></span>
                             </div>
                         </div>
                     </div>
@@ -192,7 +192,7 @@
                                 <div class="d-inline-block">
                                     <h2 class="text-white mb-0" id="whole_pay">0</h2>
                                 </div>
-                                <span class="float-right display-5 opacity-5"><i class="bi bi-pie-chart-fill"></i></span>
+                                <span class="float-right display-5 opacity-5"><i class="fa fa-tasks"></i></span>
                             </div>
                         </div>
                     </div>                   
@@ -203,7 +203,7 @@
                                 <div class="d-inline-block">
                                     <h2 class="text-white mb-0" id="whole_due">0</h2>
                                 </div>
-                                <span class="float-right display-5 opacity-5"><i class="bi bi-pie-chart-fill"></i></span>
+                                <span class="float-right display-5 opacity-5"><i class="fa fa-bookmark"></i></span>
                             </div>
                         </div>
                     </div>                     
