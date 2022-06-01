@@ -2,15 +2,17 @@
 session_start();
 include('database.php');
 
- if(isset($_GET['id'])){
-    $id = $_GET['id'];
+ if(isset($_POST['id'])){
+    $id = $_POST['id'];
 
     $sql1 = "DELETE FROM traders WHERE id = '$id'";
     $query1 = mysqli_query($link, $sql1) or die(mysqli_error($link));
     if($query1){
-      $_SESSION['flash_message'] = "File Deleted...";
-      $_SESSION['flash_message_type'] = "error";
-      echo "<script>window.open('list.php','_self')</script>";
+      // $_SESSION['flash_message'] = "File Deleted...";
+      // $_SESSION['flash_message_type'] = "error";
+      echo 1;
+    }else{
+      echo 0;
     }
  }
 

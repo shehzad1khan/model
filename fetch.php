@@ -62,7 +62,7 @@ header('location:login.php');
             $updateButton = '<a href="#" data-id="'.$row['id'].'" class="edit-data"><i class="text-info fa fa-pencil-square-o" aria-hidden="true"></i></a>';
             
             // Delete Button
-            $deleteButton = '<a href="delete.php? id='.$row['id'].'" data-id="'.$row['id'].'"><i class="text-danger fa fa-trash" aria-hidden="true"></i></a>';
+            $deleteButton = '<a href="#" data-id="'.$row['id'].'" class="dlt-btn"><i class="text-danger fa fa-trash" aria-hidden="true"></i></a>';
 
             // View Button
             $viewButton = '<a href="#" class="view-data" data-id="'.$row['id'].'"><i class="text-success fa fa-eye" aria-hidden="true"></i></a>';
@@ -71,7 +71,7 @@ header('location:login.php');
 
             $action = $updateButton." ".$deleteButton." ".$viewButton." ".$imageButton;
             $array[] = array(
-               "id" => $count,
+               "id" => $row['id'],
                "name" => $row['name'],
                "passport_no" => $row['passport_no'],
                "contact_no" => $row['contact_no'],

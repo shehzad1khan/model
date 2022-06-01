@@ -361,10 +361,30 @@
         $('#file-div').show();
       }); 
       
+       $(document).on("click", ".dlt-btn", function(){
+         if(confirm("Are you sure you want to delete this record?")){
+          var id = $(this).data("id");
+          var something = $(this);
+
+          $.ajax({
+            url: "delete.php",
+            type: "POST",
+            data : {
+              id: id
+            },
+            success: function(data){
+              if(data == 1){
+                $(something).closest("tr").hide(1000);
+                toastr.success('Record Deleted Successfully');
+                
+              }
+            }
+          });
+        }
+       });
       
     });
-    function cal(){
-      
+    function cal(){      
       var total = $('#total').val();
       var advance = $('#advance').val();
       var due = total - advance;
