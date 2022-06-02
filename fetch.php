@@ -83,7 +83,6 @@ header('location:login.php');
              );
             $count++;
          }
-
          $dataset = array(
             "echo" => 1,
             "totalrecords" => count($array),
@@ -91,9 +90,7 @@ header('location:login.php');
             "data" => $array
          );
             ## Response
- 
-
-         echo json_encode($dataset);
+          echo json_encode($dataset);
     }
 
 
