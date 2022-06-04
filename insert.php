@@ -58,7 +58,7 @@ header('location:login.php?session=unset');
 
         if($result2){
             // header("location:list.php?record=inserted");
-            $_SESSION['flash_message'] = "File inserted successfuly...";
+            $_SESSION['flash_message'] = "File Inserted Successfully...";
             $_SESSION['flash_message_type'] = "success";
             echo "<script>window.open('list.php','_self')</script>";
         }

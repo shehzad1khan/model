@@ -1,8 +1,8 @@
-<?php
+ <?php
 if (!isset($_SESSION)) session_start();
     if(!isset($_SESSION['userid']))
         header('location:login.php?session=unset');
-?>
+?> 
 <div class="header">
     <div class="header-content clearfix">
         <div class="nav-control">

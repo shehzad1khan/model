@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Ecommerce-List</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/paypal.png">
     <!-- DataTable -->
 
     <link rel="stylesheet" href="./plugins/datatables/jquery.dataTables.min.css">
@@ -278,9 +278,7 @@
     <script src="./js/dashboard/dashboard-1.js"></script>
     <script src="./js/bootsrap-icons/icons-5.1.3.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <!-- Toastr -->
-  <script src="./plugins/toastr/js/toastr.min.js"></script>
-    <script src="./plugins/toastr/js/toastr.init.js"></script>
+  
   <!-- ******* Scripts Start ******* -->
   <script>
    $(document).ready(function() {
